@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target} from 'lucide-react';
+import {ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent} from './about';
 import {presentation} from './presentation';
+import {productionDetails} from './productionDetails';
 import './styles.css';
 import './visuals.css';
 import './motion.css';
 import {usePageMotion} from './usePageMotion';
 
 const logoUrl = import.meta.env.BASE_URL + 'artproduction-logo.webp';
-const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target];
+const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video];
+const displayOrder = [...services.filter(s=>s.group===0), ...services.filter(s=>s.group===1)];
 const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',index:1},{id:'contact',index:3}];
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
     catch { return 'es'; }
   });
   const [menu, setMenu] = useState(false);
-  const t=copy[lang], e=editorial[lang], about=aboutContent[lang], ui=presentation[lang];
+  const t=copy[lang], e=editorial[lang], about=aboutContent[lang], ui=presentation[lang], details=productionDetails[lang];
   usePageMotion(lang);
   const params=new URLSearchParams(window.location.search);
   const selected=services.find(service=>service.id===params.get('service'));
@@ -87,6 +89,7 @@ function App() {
           <h2 id="about-title">{about.title}</h2>
           <div className="about-story">{about.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
         </div>
+        <aside className="equipment" aria-labelledby="equipment-title"><div><span className="equipment-model">Sony A7 IV</span><h3 id="equipment-title">{details.equipmentTitle}</h3></div><p>{details.equipment}</p></aside>
         <div className="about-approach"><h3>{about.approach}</h3><ul>{about.items.map(item=><li key={item}>{item}</li>)}</ul></div>
       </section>
 
@@ -101,12 +104,12 @@ function App() {
             return service.group===group&&<article id={service.id} key={service.id} className={'service-card service-'+service.id+(selected?.id===service.id?' selected':'')}>
               <div className="service-visual" aria-hidden="true">
                 <div className="visual-grid"/><div className="visual-frame"/>
-                <span className="visual-index">0{index+1}</span>
+                <span className="visual-index">{String(displayOrder.indexOf(service)+1).padStart(2,'0')}</span>
                 <div className="visual-icon"><Icon strokeWidth={1.15}/></div>
                 <span className="visual-corner"/>
               </div>
-              <div className="card-content"><div className="service-description"><h4>{t.names[index]}</h4><p>{t.descriptions[index]}</p>{selected?.id===service.id&&<span className="selected-label">{t.selected}</span>}</div>
-                <div className="service-price"><div><span>{t.from}</span><strong>{service.price} €</strong></div><span>{t.units[index]}</span></div>
+              <div className="card-content"><div className="service-description"><h4>{t.names[index]}</h4><p>{t.descriptions[index]}</p>{service.id==='reels'&&<p className="service-condition">{details.reelsMinimum}</p>}{selected?.id===service.id&&<span className="selected-label">{t.selected}</span>}</div>
+                <div className="service-price"><div>{service.id!=='raw-footage'&&<span>{t.from}</span>}<strong>{service.price} €</strong></div><span>{t.units[index]}</span></div>
               </div>
             </article>;
           })}</div>

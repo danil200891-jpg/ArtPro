@@ -7,5 +7,6 @@ export const services = [
  {id:'content',price:800,group:0,icon:'layers'},
  {id:'photography',price:150,group:0,icon:'camera'},
  {id:'smm',price:600,group:1,icon:'social'},
- {id:'ads',price:400,group:1,icon:'target'}
+ {id:'ads',price:400,group:1,icon:'target'},
+ {id:'raw-footage',price:100,group:0,icon:'video'}
 ] as const;
