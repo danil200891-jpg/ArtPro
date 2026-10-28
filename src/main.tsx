@@ -109,7 +109,7 @@ function App() {
                 <span className="visual-corner"/>
               </div>
               <div className="card-content"><div className="service-description"><h4>{t.names[index]}</h4><p>{t.descriptions[index]}</p>{service.id==='reels'&&<p className="service-condition">{details.reelsMinimum}</p>}{selected?.id===service.id&&<span className="selected-label">{t.selected}</span>}</div>
-                <div className="service-price"><div>{service.id!=='raw-footage'&&<span>{t.from}</span>}<strong>{service.price} €</strong></div><span>{t.units[index]}</span></div>
+                <div className="service-price"><div>{service.id!=='raw-footage'&&<span>{t.from}</span>}<strong>{service.price}{' '}<span className="price-currency">€</span></strong></div><span>{t.units[index]}</span></div>
               </div>
             </article>;
           })}</div>

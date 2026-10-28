@@ -52,3 +52,6 @@
 .service-group:first-child .service-card:nth-child(4),.service-group:first-child .service-card:nth-child(5){grid-column:span 2}
 @media(max-width:1000px){.equipment{gap:6%}.service-group:first-child .service-card:nth-child(4),.service-group:first-child .service-card:nth-child(5),.service-group:first-child .service-card:last-child{grid-column:span 1}}
 @media(max-width:700px){.equipment{grid-template-columns:1fr;gap:16px;padding:22px;margin-top:28px}.equipment h3{font-size:15px}.equipment-model{font-size:10px}.equipment>p{font-size:12px}.service-description .service-condition{font-size:12px}}
+
+/* Currency remains secondary to the price, on desktop and mobile alike. */
+.service-price strong .price-currency{font-size:.82em;font-weight:400;letter-spacing:0;color:#dedbd8;line-height:inherit;vertical-align:baseline}
