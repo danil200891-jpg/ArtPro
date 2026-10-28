@@ -6,6 +6,8 @@ import {aboutContent} from './about';
 import {presentation} from './presentation';
 import './styles.css';
 import './visuals.css';
+import './motion.css';
+import {usePageMotion} from './usePageMotion';
 
 const logoUrl = import.meta.env.BASE_URL + 'artproduction-logo.webp';
 const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target];
@@ -18,6 +20,7 @@ function App() {
   });
   const [menu, setMenu] = useState(false);
   const t=copy[lang], e=editorial[lang], about=aboutContent[lang], ui=presentation[lang];
+  usePageMotion(lang);
   const params=new URLSearchParams(window.location.search);
   const selected=services.find(service=>service.id===params.get('service'));
   const instagramFirst=params.get('from')==='whatsapp';
@@ -66,6 +69,7 @@ function App() {
     </header>
     <main id="main">
       <section className="hero" id="home" aria-labelledby="hero-title">
+        <div className="ambient-glow" aria-hidden="true"/>
         <div className="hero-meta"><span className="location">{t.location}</span></div>
         <div className="hero-identity">
           <h1 id="hero-title">ArtProduction<span aria-hidden="true">.</span></h1>
@@ -87,6 +91,7 @@ function App() {
       </section>
 
       <section className="section services" id="services" aria-labelledby="services-title">
+        <div className="ambient-glow" aria-hidden="true"/>
         <div className="section-label"><span>02 / {t.nav[1]}</span></div>
         <h2 id="services-title">{ui.services}</h2>
         <div className="service-groups">{t.categories.map((category,group)=><div className="service-group" key={category}>
@@ -110,6 +115,7 @@ function App() {
       </section>
 
       <section className="section contact" id="contact" aria-labelledby="contact-title">
+        <div className="ambient-glow" aria-hidden="true"/>
         <div className="section-label"><span>03 / {t.nav[3]}</span></div>
         <div className="contact-layout"><h2 id="contact-title">{t.contactTitle}</h2><div className="contact-details"><p>{t.contactText}</p>
           {selected&&<p className="contact-selection">{ui.selected}: <span>{t.names[services.indexOf(selected)]}</span></p>}

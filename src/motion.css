@@ -1,0 +1,28 @@
+/* Motion uses opacity and transforms only; no layout properties are animated. */
+.ambient-glow{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.ambient-glow:before{content:'';position:absolute;inset:-5%;background:radial-gradient(ellipse at 78% 35%,#8b111120,transparent 62%);opacity:.65}
+.contact .ambient-glow:before{background:radial-gradient(ellipse at 85% 85%,#ff2e2e0e,transparent 65%)}
+.button{transition:background 250ms ease,border-color 250ms ease,box-shadow 250ms ease,transform 250ms ease}
+@media(hover:hover) and (pointer:fine){
+ .button.secondary:hover{box-shadow:0 0 20px #ff2e2e16;border-color:#ff2e2e70}
+ .button.primary:hover{box-shadow:0 7px 26px #ff2e2e26}
+}
+@media(prefers-reduced-motion:no-preference){
+ .brand-logo{animation:logo-enter 650ms ease-out both}
+ .motion-pending:not(.motion-in){opacity:0}
+ .motion-pending.motion-in{animation:content-enter 580ms cubic-bezier(.2,.65,.3,1) var(--reveal-delay,0ms) backwards}
+ .ambient-glow:before{animation:ambient-drift 38s ease-in-out infinite alternate;animation-play-state:paused}
+ .ambient-glow.ambient-active:before{animation-play-state:running}
+ @keyframes logo-enter{from{opacity:0}to{opacity:1}}
+ @keyframes content-enter{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+ @keyframes ambient-drift{from{transform:translate3d(-1%,0,0)}to{transform:translate3d(2%,1%,0)}}
+}
+@media(max-width:700px) and (prefers-reduced-motion:no-preference){
+ .motion-pending.motion-in{animation-duration:480ms;animation-delay:0ms}
+ .ambient-glow:before{animation-duration:48s}
+}
+@media(prefers-reduced-motion:reduce){
+ .motion-pending{opacity:1;translate:none}
+ .ambient-glow:before,.brand-logo{animation:none}
+ .button{transition:none}
+}
