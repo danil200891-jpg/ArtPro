@@ -89,7 +89,7 @@ function App() {
           <h2 id="about-title">{about.title}</h2>
           <div className="about-story">{about.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
         </div>
-        <aside className="equipment" aria-labelledby="equipment-title"><div><span className="equipment-model">Sony A7 IV</span><h3 id="equipment-title">{details.equipmentTitle}</h3></div><p>{details.equipment}</p></aside>
+        <aside className="equipment" aria-labelledby="equipment-title"><div><h3 id="equipment-title">{details.equipmentTitle}</h3></div><p>{details.equipment}</p></aside>
         <div className="about-approach"><h3>{about.approach}</h3><ul>{about.items.map(item=><li key={item}>{item}</li>)}</ul></div>
       </section>
 
