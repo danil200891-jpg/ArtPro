@@ -1,7 +1,9 @@
+import {uaAbout} from './ukrainian';
 import type { Lang } from './services';
 
 type AboutContent = { title: string; paragraphs: string[]; approach: string; items: string[]; location: string };
 export const aboutContent: Record<Lang, AboutContent> = {
+ uk: uaAbout,
   ru: {
     title: 'ARTPRODUCTION —\nКРЕАТИВНАЯ КОМАНДА\nИЗ БАРСЕЛОНЫ',
     paragraphs: [

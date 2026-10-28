@@ -13,7 +13,7 @@ const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',inde
 
 function App() {
   const [lang, setLang] = useState<Lang>(() => {
-    try { const saved=localStorage.getItem('art-lang'); return saved==='ru'||saved==='en'?saved:'es'; }
+    try { const saved=localStorage.getItem('art-lang'); return saved==='ru'||saved==='uk'||saved==='en'?saved:'es'; }
     catch { return 'es'; }
   });
   const [menu, setMenu] = useState(false);
@@ -59,7 +59,7 @@ function App() {
       </nav>
       <div className="header-controls">
         <div className="languages" aria-label={e.language}>
-          {(['es','ru','en'] as Lang[]).map(l=><button key={l} aria-pressed={lang===l} onClick={()=>setLang(l)}>{l.toUpperCase()}</button>)}
+          {(['es','ru','uk','en'] as Lang[]).map(l=><button key={l} aria-pressed={lang===l} onClick={()=>setLang(l)}>{l==='uk'?'UA':l.toUpperCase()}</button>)}
         </div>
         <button id="menu-toggle" className="menu-toggle" aria-controls="main-navigation" aria-expanded={menu} aria-label={menu?t.close:t.menu} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button>
       </div>

@@ -1,4 +1,4 @@
-export type Lang = 'es' | 'ru' | 'en';
+export type Lang = 'es' | 'ru' | 'uk' | 'en';
 export const contacts = { instagram:'https://www.instagram.com/daniel_artpro/', whatsapp:'https://wa.me/34642164516' };
 export const services = [
  {id:'reels',price:75,group:0,icon:'reels'},
