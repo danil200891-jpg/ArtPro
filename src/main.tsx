@@ -95,7 +95,7 @@ function App() {
         <details className="about-reviews">
           <summary>{about.reviewsTitle}<span aria-hidden="true">+</span></summary>
           <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review">
-            <p>«{review}»</p><cite>{about.reviewLabel}</cite>
+            <p>«{review}»</p><cite>{index===1?<a href="https://rodyna.es" target="_blank" rel="noopener noreferrer">Korchma Rodyna · Barcelona</a>:about.reviewLabel}</cite>
           </blockquote>)}</div>
         </details>
       </section>
