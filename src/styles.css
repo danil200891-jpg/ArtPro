@@ -18,13 +18,9 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 .about-reviews{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:10px}
 .about-reviews summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 22px;cursor:pointer;background:linear-gradient(180deg,#481414 0%,#241010 35%,#101010 70%,#090909 100%)}
 .about-reviews summary::-webkit-details-marker{display:none}
- .reviews-heading{display:grid;gap:9px;min-width:0}
-.reviews-eyebrow{font-size:9px;line-height:1.6;letter-spacing:1.4px;color:var(--muted)}
+.reviews-heading{display:flex;align-items:center;gap:12px;min-width:0}
+.reviews-message{flex-shrink:0;color:var(--red)}
 .reviews-title{font-size:clamp(18px,2vw,25px);line-height:1.35;font-weight:500;letter-spacing:-.4px}
-.reviews-hint{font-size:12px;line-height:1.6;color:var(--muted)}
-.reviews-hint-open{display:none}
-.about-reviews[open] .reviews-hint-open{display:block}
-.about-reviews[open] .reviews-hint-closed{display:none}
 .reviews-arrow{flex-shrink:0;color:var(--red);transition:transform .25s ease}
 .about-reviews[open] .reviews-arrow{transform:rotate(180deg)}
 .about-reviews summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}

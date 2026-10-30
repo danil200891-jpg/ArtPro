@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
+import {MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent, rodynaDescription, coriumAttribution} from './about';
 import {presentation} from './presentation';
@@ -100,10 +100,8 @@ function App() {
         <details className="about-reviews">
           <summary>
             <span className="reviews-heading">
-              <span className="reviews-eyebrow">{about.reviewsEyebrow}</span>
+              <MessageSquare className="reviews-message" size={22} strokeWidth={1.5} aria-hidden="true"/>
               <span className="reviews-title">{about.reviewsTitle}</span>
-              <span className="reviews-hint reviews-hint-closed">{about.reviewsIntro}</span>
-              <span className="reviews-hint reviews-hint-open">{about.reviewsHide}</span>
             </span>
             <ChevronDown className="reviews-arrow" size={22} strokeWidth={1.5} aria-hidden="true"/>
           </summary>
