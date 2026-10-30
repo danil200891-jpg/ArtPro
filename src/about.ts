@@ -11,12 +11,13 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "ArtProduction превращает ваши идеи в качественный визуальный контент, который помогает привлекать внимание к бизнесу, вызывать доверие и заинтересовывать новых клиентов.",
         "Мы организуем весь процесс: от идеи и съёмки до готовых видео, рекламных креативов и контента для социальных сетей. Вам не нужно контролировать каждый шаг или разбираться в технических деталях."
     ],
-    approach: "Почему нам доверяют?",
+    approach: "Почему нам доверяют",
     items: [
-        "Профессиональное качество съёмки.",
-        "Самостоятельность и гибкость в работе.",
-        "Креативные идеи и внимание к деталям.",
-        "Комфортная атмосфера на съёмке."
+        "Понимаем ваш бизнес, а не просто техническое задание. Предлагаем контент под задачи и цели компании.",
+        "Создаём контент, который соответствует уровню вашего бренда. Уделяем внимание визуальному стилю и деталям.",
+        "Берём весь процесс производства на себя. От подготовки и съёмки до готовых материалов.",
+        "Находим индивидуальное решение для каждой задачи. Адаптируем идеи и формат под специфику бизнеса.",
+        "Становимся постоянным контент-партнёром вашего бизнеса. Помогаем поддерживать регулярное производство видеоконтента, фотографий и рекламных креативов."
     ],
     location: "Мы превращаем ваши идеи в визуальные истории, которые раскрывают ценность вашего бизнеса и привлекают внимание потенциальных клиентов.",
     reviewsTitle: "Что говорят наши клиенты",
@@ -34,12 +35,13 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "En ArtProduction transformamos tus ideas en contenido visual de calidad que ayuda a dar visibilidad a tu negocio, generar confianza y despertar interés.",
         "Nos ocupamos del proceso: desde la idea y la organización del rodaje hasta los vídeos, las creatividades publicitarias y el contenido para redes sociales. Sin que tengas que supervisar cada paso."
     ],
-    approach: "¿Por qué confían en nosotros?",
+    approach: "Por qué confían en nosotros",
     items: [
-        "Calidad audiovisual profesional.",
-        "Autonomía y flexibilidad.",
-        "Ideas creativas y atención al detalle.",
-        "Un ambiente cómodo durante el rodaje."
+        "Entendemos tu negocio, más allá del briefing. Proponemos contenido adaptado a las necesidades y los objetivos de tu empresa.",
+        "Creamos contenido a la altura de tu marca. Cuidamos el estilo visual y los detalles.",
+        "Nos encargamos de todo el proceso de producción. Desde la preparación y el rodaje hasta la entrega de los materiales.",
+        "Encontramos una solución a medida para cada proyecto. Adaptamos las ideas y el formato a las particularidades de tu negocio.",
+        "Nos convertimos en tu colaborador habitual para la creación de contenido. Te ayudamos a mantener una producción regular de vídeos, fotografías y creatividades publicitarias."
     ],
     location: "Transformamos tus ideas en historias visuales que transmiten el valor de tu negocio y captan la atención de posibles clientes.",
     reviewsTitle: "Lo que dicen nuestros clientes",
@@ -59,10 +61,11 @@ export const aboutContent: Record<Lang, AboutContent> = {
     ],
     approach: "Why clients trust us",
     items: [
-        "Professional production quality.",
-        "Independence and flexibility.",
-        "Creative ideas and attention to detail.",
-        "A relaxed filming experience."
+        "We understand your business, not just the brief. We propose content tailored to your company’s needs and goals.",
+        "We create content that lives up to your brand. We pay attention to visual style and detail.",
+        "We handle the entire production process. From preparation and filming to the finished materials.",
+        "We find an individual solution for each task. We adapt ideas and formats to the specifics of your business.",
+        "We become your ongoing content partner. We help you maintain regular production of video content, photography and advertising creatives."
     ],
     location: "We turn your ideas into visual stories that reveal the value of your business and attract the attention of potential customers.",
     reviewsTitle: "What our clients say",

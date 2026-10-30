@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
+import {Handshake, MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent, rodynaDescription, coriumAttribution} from './about';
 import {presentation} from './presentation';
@@ -19,6 +19,16 @@ const reviewClients = [
 const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video];
 const displayOrder = [...services.filter(s=>s.group===0), ...services.filter(s=>s.group===1)];
 const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',index:1},{id:'contact',index:3}];
+
+function AboutAccordion({title, icon: Icon, children}: {title:string; icon:typeof MessageSquare; children:React.ReactNode}) {
+  return <details className="about-reviews">
+    <summary>
+      <span className="reviews-heading"><Icon className="reviews-message" size={22} strokeWidth={1.5} aria-hidden="true"/><span className="reviews-title">{title}</span></span>
+      <ChevronDown className="reviews-arrow" size={22} strokeWidth={1.5} aria-hidden="true"/>
+    </summary>
+    {children}
+  </details>;
+}
 
 function App() {
   const [lang, setLang] = useState<Lang>(() => {
@@ -94,24 +104,21 @@ function App() {
           <h2 id="about-title">{about.title}</h2>
           <div className="about-story">{about.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
         </div>
-        <aside className="equipment" aria-labelledby="equipment-title"><div><h3 id="equipment-title">{details.equipmentTitle}</h3></div><p>{details.equipment}</p></aside>
-        <div className="about-approach"><h3>{about.approach}</h3><ul>{about.items.map(item=><li key={item}>{item}</li>)}</ul></div>
         <p className="about-conclusion">{about.location}</p>
-        <details className="about-reviews">
-          <summary>
-            <span className="reviews-heading">
-              <MessageSquare className="reviews-message" size={22} strokeWidth={1.5} aria-hidden="true"/>
-              <span className="reviews-title">{about.reviewsTitle}</span>
-            </span>
-            <ChevronDown className="reviews-arrow" size={22} strokeWidth={1.5} aria-hidden="true"/>
-          </summary>
+        <AboutAccordion title={about.reviewsTitle} icon={MessageSquare}>
           <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review full-review">
             <p>«{review}»</p><cite>{reviewClients[index]?<span className="review-author">
               <img className={index===2?"corium-logo":undefined} src={import.meta.env.BASE_URL+reviewClients[index].image} alt={reviewClients[index].name} width={index===2?90:64} height={index===2?28:64} loading="lazy" decoding="async"/>
               <span><strong>{reviewClients[index].name}</strong>{index===1&&<span>{rodynaDescription[lang]}</span>}{index===2&&<span>{coriumAttribution[lang].description}</span>}<a href={reviewClients[index].url} target="_blank" rel="noopener noreferrer">{index===2?coriumAttribution[lang].website:"Instagram"}<ArrowUpRight size={12} aria-hidden="true"/></a></span>
             </span>:about.reviewLabel}</cite>
           </blockquote>)}</div>
-        </details>
+        </AboutAccordion>
+        <AboutAccordion title={about.approach} icon={Handshake}>
+          <ul className="about-benefits">{about.items.map(item=><li key={item}>{item}</li>)}</ul>
+        </AboutAccordion>
+        <AboutAccordion title={details.equipmentTitle} icon={Camera}>
+          <p className="about-equipment-copy">{details.equipment}</p>
+        </AboutAccordion>
       </section>
 
       <section className="section services" id="services" aria-labelledby="services-title">
