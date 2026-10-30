@@ -5,7 +5,7 @@ type AboutContent = { title: string; paragraphs: string[]; approach: string; ite
 export const aboutContent: Record<Lang, AboutContent> = {
  uk: uaAbout,
   ru: {
-    title: "МЫ БЕРЁМ НА СЕБЯ ВАШ КОНТЕНТ,\\nЧТОБЫ ВЫ МОГЛИ ЗАНИМАТЬСЯ БИЗНЕСОМ",
+    title: "МЫ БЕРЁМ НА СЕБЯ ВАШ КОНТЕНТ,\nЧТОБЫ ВЫ МОГЛИ ЗАНИМАТЬСЯ БИЗНЕСОМ",
     paragraphs: [
         "У вас есть продукт, идеи и желание развиваться. Но не всегда есть время и понимание, как правильно показать всё это потенциальным клиентам.",
         "ArtProduction превращает ваши идеи в качественный визуальный контент, который помогает привлекать внимание к бизнесу, вызывать доверие и заинтересовывать новых клиентов.",
@@ -29,7 +29,7 @@ export const aboutContent: Record<Lang, AboutContent> = {
     ]
 },
   es: {
-    title: "NOS ENCARGAMOS DE TU CONTENIDO\\nPARA QUE TÚ TE CENTRES EN TU NEGOCIO",
+    title: "NOS ENCARGAMOS DE TU CONTENIDO\nPARA QUE TÚ TE CENTRES EN TU NEGOCIO",
     paragraphs: [
         "Tienes un producto, ideas y ganas de crecer. Pero no siempre tienes tiempo ni sabes cómo mostrarlo a tus posibles clientes.",
         "En ArtProduction transformamos tus ideas en contenido visual de calidad que ayuda a dar visibilidad a tu negocio, generar confianza y despertar interés.",
@@ -53,7 +53,7 @@ export const aboutContent: Record<Lang, AboutContent> = {
     ]
 },
   en: {
-    title: "WE TAKE CARE OF YOUR CONTENT\\nSO YOU CAN FOCUS ON YOUR BUSINESS",
+    title: "WE TAKE CARE OF YOUR CONTENT\nSO YOU CAN FOCUS ON YOUR BUSINESS",
     paragraphs: [
         "You have a product, ideas and ambitions to grow. But you may not have the time or expertise to show them to potential customers.",
         "ArtProduction turns your ideas into high-quality visual content that helps your business get noticed, build trust and attract interest.",
