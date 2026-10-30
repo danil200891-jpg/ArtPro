@@ -24,7 +24,7 @@ export const aboutContent: Record<Lang, AboutContent> = {
     reviewLabel: "Отзыв клиента",
     reviews: [
         "Мне нравится, что не нужно контролировать каждый шаг, то есть я даю полностью как бы вам креатив, а вы дальше придумываете.",
-        "Ты являешься инструментом, который превращает идею в наглядный результат.",
+        "В ресторанном бизнесе важно не только создавать качественный продукт, но и правильно представлять его гостям.\n\nУ меня как у ресторатора есть идея, которую команда кухни превращает в готовое блюдо. А ArtProduction помогает превратить эту идею в визуальную историю, доступную нашим гостям.\n\nБлагодаря профессиональной съёмке мы можем показать то, что обычно остаётся за кадром: процесс приготовления, внимание к деталям, атмосферу и конечный результат.\n\nЭто позволяет потенциальным гостям увидеть ценность нашего продукта ещё до посещения ресторана.\n\nДля нас ArtProduction — команда, которая умеет превращать идеи в качественный визуальный контент.",
         "Вы помогаете мне за меня принимать решение, как будет выглядеть картинка, так как у вас экспертизы и насмотренности больше."
     ]
 },
@@ -48,7 +48,7 @@ export const aboutContent: Record<Lang, AboutContent> = {
     reviewLabel: "Opinión de un cliente",
     reviews: [
         "Me gusta no tener que supervisar cada paso. Os dejo la parte creativa y vosotros os encargáis de desarrollar las ideas.",
-        "Eres quien convierte una idea en un resultado visual.",
+        "En la restauración, no solo es importante crear un producto de calidad, sino también saber presentarlo a los comensales.\n\nComo restaurador, tengo una idea que el equipo de cocina transforma en un plato terminado. Y ArtProduction nos ayuda a convertir esa idea en una historia visual que podemos compartir con nuestros comensales.\n\nGracias a una grabación profesional, podemos mostrar lo que normalmente queda entre bastidores: el proceso de elaboración, la atención al detalle, el ambiente y el resultado final.\n\nEsto permite que nuestros futuros comensales aprecien el valor de nuestro producto incluso antes de visitar el restaurante.\n\nPara nosotros, ArtProduction es un equipo que sabe transformar ideas en contenido visual de calidad.",
         "Me ayudáis a decidir cómo debe verse todo, porque tenéis más experiencia y criterio visual."
     ]
 },
@@ -72,8 +72,15 @@ export const aboutContent: Record<Lang, AboutContent> = {
     reviewLabel: "Client feedback",
     reviews: [
         "I like not having to manage every step. I hand over the creative side and you come up with the ideas.",
-        "You turn an idea into something people can see.",
+        "In the restaurant business, it is important not only to create a quality product, but also to present it properly to guests.\n\nAs a restaurateur, I have an idea that the kitchen team turns into a finished dish. ArtProduction helps turn that idea into a visual story we can share with our guests.\n\nProfessional filming allows us to show what usually stays behind the scenes: the preparation process, the attention to detail, the atmosphere and the final result.\n\nThis allows potential guests to see the value of our product even before visiting the restaurant.\n\nFor us, ArtProduction is a team that knows how to turn ideas into quality visual content.",
         "You help me decide how the visuals should look because you have more experience and a better eye for it."
     ]
 }
+};
+
+export const rodynaDescription: Record<Lang, string> = {
+ ru: 'Украинский ресторан · Барселона',
+ es: 'Restaurante ucraniano · Barcelona',
+ uk: 'Український ресторан · Барселона',
+ en: 'Ukrainian restaurant · Barcelona'
 };

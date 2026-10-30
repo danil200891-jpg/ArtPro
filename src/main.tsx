@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
-import {aboutContent} from './about';
+import {aboutContent, rodynaDescription} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
 import './styles.css';
@@ -94,8 +94,11 @@ function App() {
         <p className="about-conclusion">{about.location}</p>
         <details className="about-reviews">
           <summary>{about.reviewsTitle}<span aria-hidden="true">+</span></summary>
-          <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review">
-            <p>«{review}»</p><cite>{index===1?<a href="https://rodyna.es" target="_blank" rel="noopener noreferrer">Korchma Rodyna · Barcelona</a>:about.reviewLabel}</cite>
+          <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className={index===1?"about-review rodyna-review":"about-review"}>
+            <p>«{review}»</p><cite>{index===1?<span className="review-author">
+              <img src={import.meta.env.BASE_URL+'korchma-rodyna.png'} alt="Korchma Rodyna" width="64" height="64" loading="lazy" decoding="async"/>
+              <span><strong>Korchma Rodyna</strong><span>{rodynaDescription[lang]}</span><a href="https://www.instagram.com/korchma.rodyna/" target="_blank" rel="noopener noreferrer">Instagram<ArrowUpRight size={12} aria-hidden="true"/></a></span>
+            </span>:about.reviewLabel}</cite>
           </blockquote>)}</div>
         </details>
       </section>

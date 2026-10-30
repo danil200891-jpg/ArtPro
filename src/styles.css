@@ -26,3 +26,13 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 .about-review p{font-size:12px;line-height:1.85;color:var(--white)}
 .about-review cite{display:block;margin-top:16px;font-size:10px;color:var(--muted);font-style:normal}
 @media(max-width:700px){.about-conclusion{margin-top:26px;font-size:17px}.about-review-list{grid-template-columns:1fr}.about-reviews summary{font-size:12px}.about-review{padding:16px}}
+/* Full restaurant feedback and compact attribution, within the existing card. */
+.about-review-list{align-items:start}
+.rodyna-review>p{white-space:pre-line}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-author>img{width:64px;height:64px;flex-shrink:0;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
+.review-author>span{min-width:0}
+.review-author strong{display:block;font-size:12px;font-weight:600;color:var(--white)}
+.review-author span{display:block;margin-top:5px;line-height:1.6}
+.review-author a{display:inline-flex;align-items:center;gap:4px;min-height:32px;text-decoration:underline;text-underline-offset:3px}
+.review-author a:hover{color:var(--white)}
