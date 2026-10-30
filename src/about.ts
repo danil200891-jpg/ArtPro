@@ -1,15 +1,18 @@
 import {uaAbout} from './ukrainian';
 import type { Lang } from './services';
 
-type AboutContent = { title: string; paragraphs: string[]; approach: string; items: string[]; location: string; reviewsTitle: string; reviews: string[]; reviewLabel: string };
+type AboutContent = { title: string; paragraphs: string[]; approach: string; items: string[]; reviewsTitle: string; reviews: string[]; reviewLabel: string };
 export const aboutContent: Record<Lang, AboutContent> = {
  uk: uaAbout,
   ru: {
     title: "МЫ БЕРЁМ НА СЕБЯ ВАШ КОНТЕНТ,\nЧТОБЫ ВЫ МОГЛИ ЗАНИМАТЬСЯ БИЗНЕСОМ",
     paragraphs: [
-        "У вас есть продукт, идеи и желание развиваться. Но не всегда есть время и понимание, как правильно показать всё это потенциальным клиентам.",
-        "ArtProduction превращает ваши идеи в качественный визуальный контент, который помогает привлекать внимание к бизнесу, вызывать доверие и заинтересовывать новых клиентов.",
-        "Мы организуем весь процесс: от идеи и съёмки до готовых видео, рекламных креативов и контента для социальных сетей. Вам не нужно контролировать каждый шаг или разбираться в технических деталях."
+        "У каждого бизнеса свои задачи, цели и амбиции. Но далеко не у каждого предпринимателя есть время и ресурсы, чтобы регулярно заниматься созданием качественного контента, придумывать идеи, организовывать съёмки и контролировать весь процесс производства.",
+        "Именно эти задачи мы берём на себя.",
+        "ArtProduction — команда по производству профессионального видеоконтента в Барселоне. Мы помогаем компаниям, брендам и предпринимателям рассказывать о своём бизнесе через качественные видео, рекламные ролики и визуальные истории.",
+        "Для нас важно не просто снять красивое видео. Мы стремимся понять ваш бизнес, его особенности, аудиторию и задачи, чтобы предложить контент, который будет уместен, подчеркнёт сильные стороны бренда и поможет заинтересовать потенциальных клиентов.",
+        "Мы сопровождаем весь процесс — от обсуждения идеи и подготовки к съёмке до монтажа и готового результата. Вам не нужно искать отдельных специалистов, разбираться в технических деталях или контролировать каждый этап.",
+        "Вы занимаетесь развитием своего бизнеса. Мы заботимся о том, как он выглядит в глазах ваших клиентов."
     ],
     approach: "Почему нам доверяют",
     items: [
@@ -19,7 +22,6 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "Находим индивидуальное решение для каждой задачи. Адаптируем идеи и формат под специфику бизнеса.",
         "Становимся постоянным контент-партнёром вашего бизнеса. Помогаем поддерживать регулярное производство видеоконтента, фотографий и рекламных креативов."
     ],
-    location: "Мы превращаем ваши идеи в визуальные истории, которые раскрывают ценность вашего бизнеса и привлекают внимание потенциальных клиентов.",
     reviewsTitle: "Что говорят наши клиенты",
     reviewLabel: "Отзыв клиента",
     reviews: [
@@ -31,9 +33,12 @@ export const aboutContent: Record<Lang, AboutContent> = {
   es: {
     title: "NOS ENCARGAMOS DE TU CONTENIDO\nPARA QUE TÚ TE CENTRES EN TU NEGOCIO",
     paragraphs: [
-        "Tienes un producto, ideas y ganas de crecer. Pero no siempre tienes tiempo ni sabes cómo mostrarlo a tus posibles clientes.",
-        "En ArtProduction transformamos tus ideas en contenido visual de calidad que ayuda a dar visibilidad a tu negocio, generar confianza y despertar interés.",
-        "Nos ocupamos del proceso: desde la idea y la organización del rodaje hasta los vídeos, las creatividades publicitarias y el contenido para redes sociales. Sin que tengas que supervisar cada paso."
+        "Cada negocio tiene sus propias necesidades, objetivos y ambiciones. Pero no todos los empresarios disponen del tiempo y los recursos necesarios para crear contenido de calidad de forma regular, desarrollar ideas, organizar rodajes y supervisar todo el proceso de producción.",
+        "Precisamente de estas tareas nos encargamos nosotros.",
+        "ArtProduction es un equipo de producción de contenido audiovisual profesional en Barcelona. Ayudamos a empresas, marcas y emprendedores a dar a conocer su negocio a través de vídeos de calidad, anuncios e historias visuales.",
+        "Para nosotros, no se trata simplemente de grabar un vídeo bonito. Buscamos comprender tu negocio, sus particularidades, su público y sus necesidades para proponer contenido adecuado, que destaque los puntos fuertes de la marca y ayude a despertar el interés de posibles clientes.",
+        "Te acompañamos en todo el proceso: desde la conversación inicial sobre la idea y la preparación del rodaje hasta la edición y el resultado final. No necesitas buscar especialistas por separado, entender los detalles técnicos ni supervisar cada etapa.",
+        "Tú te centras en desarrollar tu negocio. Nosotros cuidamos la imagen que proyecta ante tus clientes."
     ],
     approach: "Por qué confían en nosotros",
     items: [
@@ -43,7 +48,6 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "Encontramos una solución a medida para cada proyecto. Adaptamos las ideas y el formato a las particularidades de tu negocio.",
         "Nos convertimos en tu colaborador habitual para la creación de contenido. Te ayudamos a mantener una producción regular de vídeos, fotografías y creatividades publicitarias."
     ],
-    location: "Transformamos tus ideas en historias visuales que transmiten el valor de tu negocio y captan la atención de posibles clientes.",
     reviewsTitle: "Lo que dicen nuestros clientes",
     reviewLabel: "Opinión de un cliente",
     reviews: [
@@ -55,9 +59,12 @@ export const aboutContent: Record<Lang, AboutContent> = {
   en: {
     title: "WE TAKE CARE OF YOUR CONTENT\nSO YOU CAN FOCUS ON YOUR BUSINESS",
     paragraphs: [
-        "You have a product, ideas and ambitions to grow. But you may not have the time or expertise to show them to potential customers.",
-        "ArtProduction turns your ideas into high-quality visual content that helps your business get noticed, build trust and attract interest.",
-        "We manage the process from ideas and production to finished videos, ad creatives and social media content, without you having to oversee every step."
+        "Every business has its own needs, goals and ambitions. But not every entrepreneur has the time and resources to create quality content regularly, develop ideas, organise shoots and oversee the entire production process.",
+        "These are precisely the tasks we take on.",
+        "ArtProduction is a professional video content production team based in Barcelona. We help companies, brands and entrepreneurs tell the story of their business through quality videos, commercials and visual stories.",
+        "For us, it is about more than simply shooting a beautiful video. We aim to understand your business, its distinctive features, audience and needs so we can propose relevant content that highlights your brand’s strengths and helps spark the interest of potential customers.",
+        "We support the entire process, from discussing the idea and preparing for the shoot to editing and the finished result. You do not need to find separate specialists, work out the technical details or oversee every stage.",
+        "You focus on growing your business. We take care of how it is seen by your customers."
     ],
     approach: "Why clients trust us",
     items: [
@@ -67,7 +74,6 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "We find an individual solution for each task. We adapt ideas and formats to the specifics of your business.",
         "We become your ongoing content partner. We help you maintain regular production of video content, photography and advertising creatives."
     ],
-    location: "We turn your ideas into visual stories that reveal the value of your business and attract the attention of potential customers.",
     reviewsTitle: "What our clients say",
     reviewLabel: "Client feedback",
     reviews: [

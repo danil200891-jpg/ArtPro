@@ -102,9 +102,8 @@ function App() {
         <div className="section-label"><span>01 / {t.nav[2]}</span></div>
         <div className="about-layout">
           <h2 id="about-title">{about.title}</h2>
-          <div className="about-story">{about.paragraphs.map(p=><p key={p}>{p}</p>)}</div>
+          <div className="about-story">{about.paragraphs.map((p,index)=><p key={p}>{index===1||index===about.paragraphs.length-1?<strong>{p}</strong>:p}</p>)}</div>
         </div>
-        <p className="about-conclusion">{about.location}</p>
         <AboutAccordion title={about.reviewsTitle} icon={MessageSquare}>
           <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review full-review">
             <p>«{review}»</p><cite>{reviewClients[index]?<span className="review-author">
@@ -114,10 +113,7 @@ function App() {
           </blockquote>)}</div>
         </AboutAccordion>
         <AboutAccordion title={about.approach} icon={Handshake}>
-          <ul className="about-benefits">{about.items.map(item=><li key={item}>{item}</li>)}</ul>
-        </AboutAccordion>
-        <AboutAccordion title={details.equipmentTitle} icon={Camera}>
-          <p className="about-equipment-copy">{details.equipment}</p>
+          <ul className="about-benefits">{about.items.map(item=><li key={item}><strong>{item.slice(0,item.indexOf('.')+1)}</strong>{item.slice(item.indexOf('.')+1)}</li>)}</ul>
         </AboutAccordion>
       </section>
 
