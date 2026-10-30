@@ -28,7 +28,7 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 @media(max-width:700px){.about-conclusion{margin-top:26px;font-size:17px}.about-review-list{grid-template-columns:1fr}.about-reviews summary{font-size:12px}.about-review{padding:16px}}
 /* Full restaurant feedback and compact attribution, within the existing card. */
 .about-review-list{align-items:start}
-.rodyna-review>p{white-space:pre-line}
+.full-review>p{white-space:pre-line}
 .review-author{display:flex;align-items:center;gap:12px}
 .review-author>img{width:64px;height:64px;flex-shrink:0;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
 .review-author>span{min-width:0}
