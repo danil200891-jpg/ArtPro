@@ -16,16 +16,23 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 /* About: conclusion and expandable, compact client feedback */
 .about-conclusion{margin-top:32px;padding:22px 0;border-top:1px solid var(--line);color:var(--white);font-size:clamp(16px,2vw,25px);line-height:1.5;letter-spacing:-.4px}
 .about-reviews{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:10px}
-.about-reviews summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:22px 0;font-size:14px;cursor:pointer}
+.about-reviews summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 22px;cursor:pointer;background:linear-gradient(180deg,#481414 0%,#241010 35%,#101010 70%,#090909 100%)}
 .about-reviews summary::-webkit-details-marker{display:none}
-.about-reviews summary span{color:var(--red);font-size:22px;font-weight:400;transition:transform .2s}
-.about-reviews[open] summary span{transform:rotate(45deg)}
+ .reviews-heading{display:grid;gap:9px;min-width:0}
+.reviews-eyebrow{font-size:9px;line-height:1.6;letter-spacing:1.4px;color:var(--muted)}
+.reviews-title{font-size:clamp(18px,2vw,25px);line-height:1.35;font-weight:500;letter-spacing:-.4px}
+.reviews-hint{font-size:12px;line-height:1.6;color:var(--muted)}
+.reviews-hint-open{display:none}
+.about-reviews[open] .reviews-hint-open{display:block}
+.about-reviews[open] .reviews-hint-closed{display:none}
+.reviews-arrow{flex-shrink:0;color:var(--red);transition:transform .25s ease}
+.about-reviews[open] .reviews-arrow{transform:rotate(180deg)}
 .about-reviews summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 .about-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0 0 24px}
 .about-review{margin:0;padding:20px;background:#ffffff05;border:1px solid var(--line)}
 .about-review p{font-size:12px;line-height:1.85;color:var(--white)}
 .about-review cite{display:block;margin-top:16px;font-size:10px;color:var(--muted);font-style:normal}
-@media(max-width:700px){.about-conclusion{margin-top:26px;font-size:17px}.about-review-list{grid-template-columns:1fr}.about-reviews summary{font-size:12px}.about-review{padding:16px}}
+@media(max-width:700px){.about-conclusion{margin-top:26px;font-size:17px}.about-review-list{grid-template-columns:1fr}.about-reviews summary{padding:20px 16px;gap:16px}.about-review{padding:16px}}
 /* Full restaurant feedback and compact attribution, within the existing card. */
 .about-review-list{align-items:start}
 .full-review>p{white-space:pre-line}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
+import {ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent, rodynaDescription, coriumAttribution} from './about';
 import {presentation} from './presentation';
@@ -98,7 +98,15 @@ function App() {
         <div className="about-approach"><h3>{about.approach}</h3><ul>{about.items.map(item=><li key={item}>{item}</li>)}</ul></div>
         <p className="about-conclusion">{about.location}</p>
         <details className="about-reviews">
-          <summary>{about.reviewsTitle}<span aria-hidden="true">+</span></summary>
+          <summary>
+            <span className="reviews-heading">
+              <span className="reviews-eyebrow">{about.reviewsEyebrow}</span>
+              <span className="reviews-title">{about.reviewsTitle}</span>
+              <span className="reviews-hint reviews-hint-closed">{about.reviewsIntro}</span>
+              <span className="reviews-hint reviews-hint-open">{about.reviewsHide}</span>
+            </span>
+            <ChevronDown className="reviews-arrow" size={22} strokeWidth={1.5} aria-hidden="true"/>
+          </summary>
           <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review full-review">
             <p>«{review}»</p><cite>{reviewClients[index]?<span className="review-author">
               <img className={index===2?"corium-logo":undefined} src={import.meta.env.BASE_URL+reviewClients[index].image} alt={reviewClients[index].name} width={index===2?90:64} height={index===2?28:64} loading="lazy" decoding="async"/>
