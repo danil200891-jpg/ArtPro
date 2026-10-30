@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
-import {aboutContent, rodynaDescription} from './about';
+import {aboutContent, rodynaDescription, coriumAttribution} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
 import './styles.css';
@@ -11,6 +11,11 @@ import './motion.css';
 import {usePageMotion} from './usePageMotion';
 
 const logoUrl = import.meta.env.BASE_URL + 'artproduction-logo.webp';
+const reviewClients = [
+  {name:'MVP Esports Barcelona', image:'mvp-barcelona.png', url:'https://www.instagram.com/mvpesports.es/'},
+  {name:'Korchma Rodyna', image:'korchma-rodyna.png', url:'https://www.instagram.com/korchma.rodyna/'},
+  {name:'CORIUM Barcelona', image:'corium-barcelona.png', url:'https://coriumshops.com/'}
+];
 const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video];
 const displayOrder = [...services.filter(s=>s.group===0), ...services.filter(s=>s.group===1)];
 const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',index:1},{id:'contact',index:3}];
@@ -94,10 +99,10 @@ function App() {
         <p className="about-conclusion">{about.location}</p>
         <details className="about-reviews">
           <summary>{about.reviewsTitle}<span aria-hidden="true">+</span></summary>
-          <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className={index<2?"about-review full-review":"about-review"}>
-            <p>«{review}»</p><cite>{index<2?<span className="review-author">
-              <img src={import.meta.env.BASE_URL+(index===0?'mvp-barcelona.png':'korchma-rodyna.png')} alt={index===0?"MVP Esports Barcelona":"Korchma Rodyna"} width="64" height="64" loading="lazy" decoding="async"/>
-              <span><strong>{index===0?"MVP Esports Barcelona":"Korchma Rodyna"}</strong>{index===1&&<span>{rodynaDescription[lang]}</span>}<a href={index===0?"https://www.instagram.com/mvpesports.es/":"https://www.instagram.com/korchma.rodyna/"} target="_blank" rel="noopener noreferrer">Instagram<ArrowUpRight size={12} aria-hidden="true"/></a></span>
+          <div className="about-review-list">{about.reviews.map((review,index)=><blockquote key={index} className="about-review full-review">
+            <p>«{review}»</p><cite>{reviewClients[index]?<span className="review-author">
+              <img className={index===2?"corium-logo":undefined} src={import.meta.env.BASE_URL+reviewClients[index].image} alt={reviewClients[index].name} width={index===2?90:64} height={index===2?28:64} loading="lazy" decoding="async"/>
+              <span><strong>{reviewClients[index].name}</strong>{index===1&&<span>{rodynaDescription[lang]}</span>}{index===2&&<span>{coriumAttribution[lang].description}</span>}<a href={reviewClients[index].url} target="_blank" rel="noopener noreferrer">{index===2?coriumAttribution[lang].website:"Instagram"}<ArrowUpRight size={12} aria-hidden="true"/></a></span>
             </span>:about.reviewLabel}</cite>
           </blockquote>)}</div>
         </details>
