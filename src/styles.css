@@ -13,10 +13,10 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 @media(max-width:360px){:root{--space:20px}.hero h1{font-size:10.25vw}.service-row{grid-template-columns:minmax(0,1fr) 78px;gap:12px}.service-price strong{font-size:21px}.contact h2{font-size:34px}.contact-actions .button{font-size:11px;padding:13px;gap:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 
-/* About: conclusion and expandable, compact client feedback */
+/* About: disclosures use the section background and shared separators. */
 
-.about-reviews{background:var(--black);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:10px}
-.about-reviews summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 22px;cursor:pointer;background:var(--black)}
+.about-reviews{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:10px}
+.about-reviews summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;cursor:pointer}
 .about-reviews summary::-webkit-details-marker{display:none}
 .reviews-heading{display:flex;align-items:center;gap:12px;min-width:0}
 .reviews-message{flex-shrink:0;color:var(--red)}
@@ -24,11 +24,11 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 .reviews-arrow{flex-shrink:0;color:var(--red);transition:transform .25s ease}
 .about-reviews[open] .reviews-arrow{transform:rotate(180deg)}
 .about-reviews summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.about-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0 0 24px}
-.about-review{margin:0;padding:20px;background:#ffffff05;border:1px solid var(--line)}
-.about-review p{font-size:12px;line-height:1.85;color:var(--white)}
+.about-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:0 0 24px}
+.about-review{margin:0;padding:20px 0 0;border-top:1px solid var(--line)}
+.about-review p{font-size:13px;line-height:1.95;color:var(--muted)}
 .about-review cite{display:block;margin-top:16px;font-size:10px;color:var(--muted);font-style:normal}
-@media(max-width:700px){.about-review-list{grid-template-columns:1fr}.about-reviews summary{padding:20px 16px;gap:16px}.about-review{padding:16px}}
+@media(max-width:700px){.about-review-list{grid-template-columns:1fr}.about-reviews summary{padding:20px 0;gap:16px}.about-review{padding:18px 0 0}.about-review p{font-size:12px}}
 /* Full restaurant feedback and compact attribution, within the existing card. */
 .about-review-list{align-items:start}
 .full-review>p{white-space:pre-line}
@@ -43,11 +43,11 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 .review-author>img.corium-logo{width:90px;height:auto;object-fit:contain;border:0;border-radius:0;background:transparent}
 
 /* Shared disclosure content, without additional cards or backgrounds. */
-.about-benefits{list-style:none;margin:0;padding:8px 22px 26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 36px}
+.about-benefits{list-style:none;margin:0;padding:8px 0 26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 36px}
 .about-benefits li{position:relative;padding-left:15px;color:var(--muted);font-size:13px;line-height:1.85}
 .about-benefits li:before{content:'';position:absolute;left:0;top:10px;width:3px;height:3px;background:var(--red)}
 
-@media(max-width:700px){.about-benefits{grid-template-columns:minmax(0,1fr);padding:4px 16px 22px;gap:18px}.about-benefits li{font-size:12px}}
+@media(max-width:700px){.about-benefits{grid-template-columns:minmax(0,1fr);padding:4px 0 22px;gap:18px}.about-benefits li{font-size:12px}}
 
 .about-story strong,.about-benefits strong{color:var(--white);font-weight:600}
 .about-layout+.about-reviews{margin-top:32px}
