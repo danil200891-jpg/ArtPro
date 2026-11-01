@@ -24,26 +24,7 @@ main,footer{max-width:1600px;margin:auto}.hero{padding:36px var(--space) 85px;mi
 .reviews-arrow{flex-shrink:0;color:var(--red);transition:transform .25s ease}
 .about-reviews[open] .reviews-arrow{transform:rotate(180deg)}
 .about-reviews summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.about-review-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:0 0 24px}
-.about-review{margin:0;padding:20px 0 0;border-top:1px solid var(--line)}
-.about-review p{font-size:13px;line-height:1.95;color:var(--muted)}
-.about-review cite{display:block;margin-top:16px;font-size:10px;color:var(--muted);font-style:normal}
-@media(max-width:700px){.about-review-list{grid-template-columns:1fr}.about-reviews summary{padding:20px 0;gap:16px}.about-review{padding:18px 0 0}.about-review p{font-size:12px}}
-/* Full restaurant feedback and compact attribution, within the existing card. */
-.about-review-list{align-items:start}
-.full-review>p{white-space:pre-line}
-.review-author{display:flex;align-items:center;gap:12px}
-.review-author>img{width:64px;height:64px;flex-shrink:0;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
-.review-author>span{min-width:0}
-.review-author strong{display:block;font-size:12px;font-weight:600;color:var(--white)}
-.review-author span{display:block;margin-top:5px;line-height:1.6}
-.review-author a{display:inline-flex;align-items:center;gap:4px;min-height:32px;text-decoration:underline;text-underline-offset:3px}
-.review-author a:hover{color:var(--white)}
-
-.review-author>img.corium-logo{width:90px;height:auto;object-fit:contain;border:0;border-radius:0;background:transparent}
-.review-author>img.lem-logo{width:90px;height:auto;object-fit:contain;border:0;border-radius:0;background:transparent}
-.review-author .review-company-link{flex-wrap:wrap}
-.review-author .review-company-link:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media(max-width:700px){.about-reviews summary{padding:20px 0;gap:16px}}
 
 /* Shared disclosure content, without additional cards or backgrounds. */
 .about-benefits{list-style:none;margin:0;padding:8px 0 26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 36px}
