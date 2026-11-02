@@ -18,14 +18,44 @@ export const lemReview: Record<Lang, {description:string; text:string}> = {
   },
   es: {
     description:'Muebles de diseño en madera maciza · Barcelona',
-    text:'Tenía ideas e imágenes en mente para un vídeo sobre mi silla, pero difícilmente habría sabido convertirlas en un briefing claro. Supieron captar lo que yo mismo no lograba explicar del todo: la atmósfera, el carácter y la esencia del proyecto. El resultado fue exactamente lo que buscaba.\n\nEstoy acostumbrado a hacer muchas cosas con mis propias manos, pero cada oficio tiene una profundidad que ni el equipo ni el gusto personal pueden sustituir. Gracias por ayudarme a ver mi idea desde otra perspectiva y encontrar el lenguaje visual adecuado para expresarla. Ahora sé que merece la pena contar con un buen videógrafo cuando buscas un resultado que quizá ni siquiera habrías imaginado alcanzar por tu cuenta.'
+    text:`Tenía bastante claro cómo debía ser la película sobre mi silla. O, al menos, eso creía. Tenía ideas, sensaciones, algunas imágenes en la cabeza, pero, sinceramente, dudo que hubiera sabido convertir todo aquello en un briefing claro.
+
+Y ahí fue donde ocurrió lo más interesante. Ustedes no se limitaron a escuchar lo que les decía: de algún modo, supieron sentir lo que ni yo mismo lograba explicar del todo. Captaron la atmósfera, el carácter y la idea misma del proyecto. El resultado fue exactamente lo que quería, aunque antes de empezar a trabajar probablemente no habría sabido expresarlo ni siquiera en unas pocas frases.
+
+Estoy acostumbrado a hacer muchas cosas por mi cuenta. Cuando uno crea algo con sus propias manos, poco a poco empieza a pensar que puede resolver prácticamente cualquier tarea. Pero este trabajo volvió a recordarme algo muy sencillo: cada oficio tiene una profundidad que no se puede sustituir ni con un buen equipo, ni con ganas, ni siquiera con el propio gusto.
+
+Se puede aprender a manejar una cámara, entender cómo funciona la edición y montar un vídeo bastante digno. Pero ver un proyecto desde fuera, sentir su carácter y encontrar un lenguaje visual que transmita lo que su autor tenía en mente ya es otra historia.
+
+Gracias por no limitarse a grabar un vídeo, sino por ayudarme a ver mi propia idea desde otra perspectiva. Y, algo que valoro especialmente, por hacerlo de tal manera que el resultado se acercó mucho más a lo que imaginaba de lo que yo mismo era capaz de explicar.
+
+Ahora tengo claro que merece la pena contar con un buen videógrafo no cuando uno no sabe grabar, sino cuando quiere conseguir un resultado al que, por su cuenta, quizá ni siquiera se le habría ocurrido llegar.`
   },
   uk: {
     description:'Дизайнерські меблі з масиву дерева · Барселона',
-    text:'У мене були ідеї та образи для фільму про мій стілець, але перетворити їх на чітке технічне завдання я навряд чи зміг би. Ви відчули те, чого я сам не міг до кінця пояснити: настрій, характер і саму ідею проєкту. У результаті вийшло саме те, чого мені хотілося.\n\nЯ звик багато робити власноруч, але кожне ремесло має глибину, якої не замінять ані обладнання, ані власний смак. Дякую за те, що ви допомогли мені побачити мою ідею з іншого боку та знайшли для неї точну візуальну мову. Тепер я знаю: хорошого відеографа варто запрошувати, коли хочеш отримати результат, до якого самостійно, можливо, навіть не здогадався б дійти.'
+    text:`Я досить добре уявляв, яким має бути фільм про мій стілець. Точніше, мені так здавалося. У мене були ідеї, відчуття, якісь образи в голові, але, чесно кажучи, перетворити все це на чітке технічне завдання я навряд чи зміг би.
+
+І ось тут сталося найцікавіше. Ви не просто почули те, що я говорив, а якимось чином відчули те, чого я сам до кінця не міг пояснити. Ви вловили настрій, характер і саму ідею проєкту. У результаті вийшло саме те, чого мені хотілося, хоча до початку роботи я, мабуть, не зміг би сформулювати це навіть у кількох реченнях.
+
+Я звик багато робити самостійно. Коли створюєте щось власноруч, поступово починаєте думати, що можете впоратися практично з будь-яким завданням. Але ця робота ще раз нагадала мені одну просту річ: кожне ремесло має свою глибину, якої не замінять ані хороше обладнання, ані бажання, ані навіть власний смак.
+
+Можна навчитися користуватися камерою, розібратися в монтажі й зібрати цілком пристойний ролик. Але побачити проєкт збоку, відчути його характер і знайти візуальну мову, яка передасть те, що задумав автор, — це вже зовсім інша історія.
+
+Дякую вам за те, що не просто зняли відео, а допомогли мені побачити власну ідею з іншого боку. І, що особливо цінно, зробили це так, що результат виявився набагато ближчим до мого внутрішнього уявлення, ніж я сам міг би собі пояснити.
+
+Тепер я точно знаю, що хорошого відеографа варто запрошувати не тоді, коли самі не вмієте знімати, а тоді, коли хочете отримати результат, до якого самостійно, можливо, навіть не здогадалися б дійти.`
   },
   en: {
     description:'Designer solid wood furniture · Barcelona',
-    text:'I had ideas and images in mind for a film about my chair, but I doubt I could have turned them into a clear brief. You understood what I could not fully explain myself: the mood, the character and the very essence of the project. The result was exactly what I had hoped for.\n\nI am used to making many things with my own hands, but every craft has a depth that neither equipment nor personal taste can replace. Thank you for helping me see my idea from a different perspective and finding the right visual language for it. Now I know that a good videographer is worth bringing in when you want a result you might never have thought to reach on your own.'
+    text:`I had a fairly clear picture of what the film about my chair should be like. Or at least I thought I did. I had ideas, feelings, a few images in my head, but, honestly, I doubt I could have turned all of that into a clear brief.
+
+And that is where the most interesting part happened. You did more than listen to what I was saying: somehow, you sensed what I could not fully explain myself. You captured the mood, the character and the very idea behind the project. The result was exactly what I wanted, even though, before we started, I probably could not have put it into even a few sentences.
+
+I am used to doing a lot of things myself. When you make something with your own hands, you gradually start to think you can figure out almost any task. But this project reminded me once again of one simple thing: every craft has a depth of its own that cannot be replaced by good equipment, enthusiasm or even your own taste.
+
+You can learn to use a camera, get to grips with editing and put together a perfectly decent video. But seeing a project from the outside, sensing its character and finding a visual language that conveys what its creator had in mind — that is a different story altogether.
+
+Thank you for doing more than just making a video: you helped me see my own idea from a different perspective. And what I value especially is that you did it in a way that brought the result much closer to the picture in my mind than I could ever have explained to myself.
+
+Now I know for sure that the time to bring in a good videographer is not when you cannot film something yourself, but when you want a result you might never even have thought to reach on your own.`
   }
 };

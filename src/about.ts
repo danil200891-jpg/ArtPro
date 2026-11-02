@@ -31,29 +31,29 @@ export const aboutContent: Record<Lang, AboutContent> = {
     ]
 },
   es: {
-    title: "NOS ENCARGAMOS DE TU CONTENIDO\nPARA QUE TÚ TE CENTRES EN TU NEGOCIO",
+    title: "NOS ENCARGAMOS DE SU CONTENIDO\nPARA QUE PUEDAN DEDICARSE A SU NEGOCIO",
     paragraphs: [
         "Cada negocio tiene sus propias necesidades, objetivos y ambiciones. Pero no todos los empresarios disponen del tiempo y los recursos necesarios para crear contenido de calidad de forma regular, desarrollar ideas, organizar rodajes y supervisar todo el proceso de producción.",
         "Precisamente de estas tareas nos encargamos nosotros.",
         "ArtProduction es un equipo de producción de contenido audiovisual profesional en Barcelona. Ayudamos a empresas, marcas y emprendedores a dar a conocer su negocio a través de vídeos de calidad, anuncios e historias visuales.",
-        "Para nosotros, no se trata simplemente de grabar un vídeo bonito. Buscamos comprender tu negocio, sus particularidades, su público y sus necesidades para proponer contenido adecuado, que destaque los puntos fuertes de la marca y ayude a despertar el interés de posibles clientes.",
-        "Te acompañamos en todo el proceso: desde la conversación inicial sobre la idea y la preparación del rodaje hasta la edición y el resultado final. No necesitas buscar especialistas por separado, entender los detalles técnicos ni supervisar cada etapa.",
-        "Tú te centras en desarrollar tu negocio. Nosotros cuidamos la imagen que proyecta ante tus clientes."
+        "Para nosotros, no se trata simplemente de grabar un vídeo bonito. Buscamos comprender su negocio, sus particularidades, su público y sus necesidades para proponer contenido adecuado, que destaque los puntos fuertes de la marca y ayude a despertar el interés de posibles clientes.",
+        "Les acompañamos en todo el proceso: desde la conversación inicial sobre la idea y la preparación del rodaje hasta la edición y el resultado final. No necesitan buscar especialistas por separado, entender los detalles técnicos ni supervisar cada etapa.",
+        "Ustedes se centran en desarrollar su negocio. Nosotros cuidamos la imagen que proyecta ante sus clientes."
     ],
     approach: "Por qué confían en nosotros",
     items: [
-        "Entendemos tu negocio, más allá del briefing. Proponemos contenido adaptado a las necesidades y los objetivos de tu empresa.",
-        "Creamos contenido a la altura de tu marca. Cuidamos el estilo visual y los detalles.",
+        "Entendemos su negocio, más allá del briefing. Proponemos contenido adaptado a las necesidades y los objetivos de su empresa.",
+        "Creamos contenido a la altura de su marca. Cuidamos el estilo visual y los detalles.",
         "Nos encargamos de todo el proceso de producción. Desde la preparación y el rodaje hasta la entrega de los materiales.",
-        "Encontramos una solución a medida para cada proyecto. Adaptamos las ideas y el formato a las particularidades de tu negocio.",
-        "Nos convertimos en tu colaborador habitual para la creación de contenido. Te ayudamos a mantener una producción regular de vídeos, fotografías y creatividades publicitarias."
+        "Encontramos una solución a medida para cada proyecto. Adaptamos las ideas y el formato a las particularidades de su negocio.",
+        "Nos convertimos en su colaborador habitual para la creación de contenido. Les ayudamos a mantener una producción regular de vídeos, fotografías y creatividades publicitarias."
     ],
     reviewsTitle: "Lo que dicen nuestros clientes",
     reviewLabel: "Opinión de un cliente",
     reviews: [
         "Para mí, una de las principales ventajas de trabajar con ArtProduction es poder confiar una idea al equipo sin tener que supervisar cada paso.\n\nPuedo plantear un objetivo y dejar la parte creativa en sus manos, sabiendo que encontrarán por su cuenta la mejor manera de llevarlo a cabo.\n\nValoro especialmente la gran calidad de las grabaciones, su flexibilidad y su forma de organizar el trabajo. Incluso cuando surgen imprevistos, el equipo no traslada los problemas al cliente, sino que busca soluciones de forma autónoma.\n\nEl resultado es un contenido de calidad, sin necesidad de intervenir constantemente en el proceso.\n\nSon precisamente esa autonomía, profesionalidad y creatividad las que hacen que valore nuestra colaboración.",
         "En la restauración, no solo es importante crear un producto de calidad, sino también saber presentarlo a los comensales.\n\nComo restaurador, tengo una idea que el equipo de cocina transforma en un plato terminado. Y ArtProduction nos ayuda a convertir esa idea en una historia visual que podemos compartir con nuestros comensales.\n\nGracias a una grabación profesional, podemos mostrar lo que normalmente queda entre bastidores: el proceso de elaboración, la atención al detalle, el ambiente y el resultado final.\n\nEsto permite que nuestros futuros comensales aprecien el valor de nuestro producto incluso antes de visitar el restaurante.\n\nPara nosotros, ArtProduction es un equipo que sabe transformar ideas en contenido visual de calidad.",
-        "Para que una marca crezca, es importante que los posibles compradores puedan ver el producto, apreciar su calidad e interesarse por él incluso antes de comprarlo.\n\nPero cuando llevas un negocio, gran parte del tiempo se dedica a otras tareas. A menudo, apenas queda tiempo para crear contenido, buscar ideas y conocer los formatos actuales.\n\nCon ArtProduction no tenemos que planificar cada sesión por nuestra cuenta. El equipo propone soluciones visuales, elige los ángulos y nos ayuda a mostrar nuestras creaciones de la mejor manera.\n\nValoramos especialmente poder confiarles la parte creativa y la organización del proceso. Esto nos ahorra tiempo y nos permite centrarnos en las tareas principales del negocio."
+        "Para que una marca crezca, es importante que los posibles compradores puedan ver el producto, apreciar su calidad e interesarse por él incluso antes de comprarlo.\n\nPero cuando se lleva un negocio, gran parte del tiempo se dedica a otras tareas. A menudo, apenas queda tiempo para crear contenido, buscar ideas y conocer los formatos actuales.\n\nCon ArtProduction no tenemos que planificar cada sesión por nuestra cuenta. El equipo propone soluciones visuales, elige los ángulos y nos ayuda a mostrar nuestras creaciones de la mejor manera.\n\nValoramos especialmente poder confiarles la parte creativa y la organización del proceso. Esto nos ahorra tiempo y nos permite centrarnos en las tareas principales del negocio."
     ]
 },
   en: {
@@ -63,7 +63,7 @@ export const aboutContent: Record<Lang, AboutContent> = {
         "These are precisely the tasks we take on.",
         "ArtProduction is a professional video content production team based in Barcelona. We help companies, brands and entrepreneurs tell the story of their business through quality videos, commercials and visual stories.",
         "For us, it is about more than simply shooting a beautiful video. We aim to understand your business, its distinctive features, audience and needs so we can propose relevant content that highlights your brand’s strengths and helps spark the interest of potential customers.",
-        "We support the entire process, from discussing the idea and preparing for the shoot to editing and the finished result. You do not need to find separate specialists, work out the technical details or oversee every stage.",
+        "We guide you through the entire process, from discussing the idea and preparing for the shoot to editing and the finished result. You do not need to find separate specialists, work out the technical details or oversee every stage.",
         "You focus on growing your business. We take care of how it is seen by your customers."
     ],
     approach: "Why clients trust us",
