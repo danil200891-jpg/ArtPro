@@ -6,6 +6,7 @@ import {aboutContent} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
 import {ReviewCards} from './ReviewCards';
+import {BriefForm} from './BriefForm';
 import './styles.css';
 import './visuals.css';
 import './motion.css';
@@ -142,6 +143,8 @@ function App() {
           </a>)}</div>
         </div></div>
       </section>
+
+      <BriefForm lang={lang} message={selected?message:undefined} whatsappUrl={whatsappUrl} instagramFirst={instagramFirst}/>
     </main>
     <footer><span>ArtProduction</span><p>© {new Date().getFullYear()} · {t.rights}</p><span>{e.city}</span></footer>
   </>;

@@ -1,0 +1,41 @@
+/* Final contact section with brief; reuses section, card and button language. */
+.brief{background:radial-gradient(ellipse at 85% 100%,#8b11113b,transparent 67%),linear-gradient(135deg,#100c0c,#090909 75%)}
+.brief:before{content:'';position:absolute;top:-1px;left:var(--space);width:110px;height:1px;background:linear-gradient(90deg,var(--red),transparent);box-shadow:0 0 22px #ff2e2e33;pointer-events:none}
+.brief .ambient-glow:before{background:radial-gradient(ellipse at 85% 85%,#ff2e2e0e,transparent 65%)}
+.brief-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;align-items:start}
+.brief h2{font-size:clamp(28px,3.4vw,52px);letter-spacing:-1.6px}
+.brief-intro>p{font-size:13px;line-height:1.9;color:var(--muted);margin-top:26px;max-width:420px}
+.brief-intro .contact-selection{font-size:12px;margin-top:14px}
+.brief-direct{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);max-width:420px}
+.brief-direct>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:var(--muted);margin-bottom:14px}
+.brief-links{display:flex;flex-wrap:wrap;gap:12px 28px}
+.brief-link{display:inline-flex;align-items:center;gap:9px;padding:6px 0;font-size:13px;font-weight:500;border-bottom:1px solid #ffffff30;transition:border-color .25s ease,color .25s ease}
+.brief-link svg:first-child{color:var(--red)}
+.brief-link svg:last-child{color:var(--muted);transition:color .25s ease}
+.brief-form{display:flex;flex-direction:column;gap:30px}
+.brief-field{border:0;margin:0;padding:0;min-width:0}
+.brief-field legend,.brief-legend{display:flex;align-items:baseline;gap:12px;padding:0;margin-bottom:16px;font-size:15px;font-weight:500;letter-spacing:-.3px;line-height:1.5}
+.brief-number{font-size:9px;letter-spacing:1.5px;color:var(--red);font-weight:500}
+.brief-hint{font-size:11px;color:var(--muted);margin:-8px 0 16px 25px;line-height:1.6}
+.brief-options{display:grid;grid-auto-rows:1fr;gap:10px}
+.brief-needs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.brief-timing{grid-template-columns:repeat(3,minmax(0,1fr))}
+.brief-option{position:relative;display:flex;min-width:0;cursor:pointer}
+.brief-option input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.brief-option span{flex:1;display:flex;align-items:center;gap:11px;min-height:54px;padding:14px 16px;font-size:12px;line-height:1.45;border:1px solid #ffffff1d;border-radius:4px;background:linear-gradient(145deg,#171313,#101010 55%);color:#dedbd8;transition:border-color .25s ease,box-shadow .25s ease,color .25s ease}
+.brief-check{width:15px;height:15px;padding:1px;flex-shrink:0;border:1px solid #ffffff40;border-radius:2px;color:transparent;transition:border-color .2s ease,color .2s ease}
+.brief-option input[type=radio]+span .brief-check{border-radius:50%}
+.brief-option input:checked+span{border-color:#ff2e2e99;box-shadow:0 0 30px #8b11112a;color:var(--white)}
+.brief-option input:checked+span .brief-check{border-color:var(--red);color:var(--red)}
+.brief-option input:focus-visible+span{outline:2px solid var(--red);outline-offset:4px}
+.brief-input{width:100%;font:inherit;font-size:14px;color:var(--white);background:transparent;border:0;border-bottom:1px solid #ffffff30;border-radius:0;padding:12px 0;transition:border-color .25s ease}
+.brief-input::placeholder{color:#b8b1aa80}
+.brief-input:focus{outline:none;border-color:var(--red)}
+.brief-actions{padding-top:4px}
+.brief-actions .button{gap:12px}
+.brief-note{font-size:11px;color:var(--muted);line-height:1.8;margin-top:-14px}
+@media(hover:hover) and (pointer:fine){.brief-option:hover span{border-color:#ff2e2e65}.brief-link:hover{border-color:var(--red)}.brief-link:hover svg:last-child{color:var(--white)}}
+@media(max-width:1000px){.brief-layout{grid-template-columns:1fr 1.2fr;gap:6%}.brief h2{font-size:36px}.brief-timing{grid-template-columns:minmax(0,1fr)}.brief-actions .button{padding:14px 17px}}
+@media(max-width:700px){.brief-layout{grid-template-columns:1fr;gap:34px}.brief h2{font-size:30px;letter-spacing:-1px}.brief-intro>p{font-size:12px;margin-top:18px}.brief-direct{margin-top:26px;padding-top:18px}.brief-form{gap:26px}.brief-field legend,.brief-legend{font-size:14px;margin-bottom:14px}.brief-option span{min-height:52px;padding:12px 14px;gap:10px}.brief-actions .button{width:100%;padding:14px 16px;gap:10px}.brief-note{margin-top:-12px}}
+@media(max-width:360px){.brief h2{font-size:27px}.brief-option span{font-size:11px;padding:11px 12px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.brief-option span,.brief-check,.brief-input,.brief-link,.brief-link svg{transition:none}}

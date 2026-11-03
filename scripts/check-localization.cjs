@@ -7,7 +7,7 @@ const esbuild = Module.createRequire(require.resolve('vite/package.json'))('esbu
 
 async function check() {
   const result = await esbuild.build({
-    stdin: {contents: "export {ReviewCards} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about';", loader: 'tsx', resolveDir: path.resolve('src')},
+    stdin: {contents: "export {ReviewCards} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about'; export {brief, buildBriefMessage} from './brief';", loader: 'tsx', resolveDir: path.resolve('src')},
     bundle: true, write: false, platform: 'node', format: 'cjs',
     external: ['react'], loader: {'.css': 'empty'}, define: {'import.meta.env.BASE_URL': '"/"'}
   });
@@ -15,7 +15,7 @@ async function check() {
   compiled.filename = __filename;
   compiled.paths = module.paths;
   compiled._compile(result.outputFiles[0].text, __filename);
-  const {ReviewCards, lemReview, getClientReviews, copy, services, aboutContent} = compiled.exports;
+  const {ReviewCards, lemReview, getClientReviews, copy, services, aboutContent, brief, buildBriefMessage} = compiled.exports;
   for (const lang of Object.keys(copy)) {
     const reviews = getClientReviews(lang);
     assert.equal(lemReview[lang].text.trim().split(/\n\s*\n/).length, 6, `${lang}: LEM must contain all six paragraphs`);
@@ -29,7 +29,15 @@ async function check() {
       const fullText = renderToStaticMarkup(React.createElement('p', null, `«${review.text}»`));
       assert.ok(html.includes(fullText), `${lang}: rendered card does not contain the complete ${review.id} review`);
     }
-    console.log(`${lang}: four rendered reviews; LEM has six complete paragraphs; service and section counts match RU`);
+    for (const [key, value] of Object.entries(brief.ru)) {
+      if (Array.isArray(value)) assert.equal(brief[lang][key].length, value.length, `${lang}: incomplete brief ${key}`);
+      else assert.ok(typeof brief[lang][key] === 'string' && brief[lang][key].trim(), `${lang}: missing brief ${key}`);
+    }
+    assert.equal(buildBriefMessage(lang, [], '  ', null), brief[lang].emptyMessage, `${lang}: empty brief must use the general message`);
+    const fullBrief = buildBriefMessage(lang, brief[lang].needs.map((_, index) => index), 'Test Co, test.es', 0);
+    for (const need of brief[lang].needs) assert.ok(fullBrief.includes(need), `${lang}: brief message is missing ${need}`);
+    assert.ok(fullBrief.includes('Test Co, test.es') && fullBrief.includes(brief[lang].timing[0]), `${lang}: brief message is missing answers`);
+    console.log(`${lang}: four rendered reviews; LEM has six complete paragraphs; service, section and brief counts match RU; brief message includes every answer`);
   }
 }
 check().catch(error => {console.error(error); process.exitCode = 1;});

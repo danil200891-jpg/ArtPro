@@ -1,0 +1,21 @@
+import type {Lang} from './services';
+import {uaBrief} from './ukrainian';
+
+export type BriefCopy = {label:string; title:string; subtitle:string; direct:string; needsLabel:string; needsHint:string; needs:string[]; companyLabel:string; companyPlaceholder:string; timingLabel:string; timing:string[]; submit:string; note:string; greeting:string; emptyMessage:string; messageLabels:[string,string,string]};
+
+export const brief: Record<Lang, BriefCopy> = {
+ uk: uaBrief,
+ es: {label:'Brief',title:'Cuéntennos qué necesitan.\nLes propondremos cómo resolverlo.',subtitle:'Les responderemos en un día laborable. La primera conversación no les compromete a nada.',direct:'O escríbannos directamente',needsLabel:'¿Qué necesitan?',needsHint:'Pueden elegir varias opciones',needs:['Reels','Vídeo publicitario','Cobertura de evento','Contenido para un mes'],companyLabel:'Nombre de la empresa o enlace a la web',companyPlaceholder:'Por ejemplo, Café Sol o cafesol.es',timingLabel:'¿Cuándo necesitan el resultado?',timing:['Urgente','Este mes','Aún lo estamos valorando'],submit:'Hablar del proyecto por WhatsApp',note:'El brief se abrirá en WhatsApp como un mensaje listo: solo tendrán que enviarlo.',greeting:'Hola, les envío un brief desde la web de ArtProduction:',emptyMessage:'Hola, me gustaría hablar de un proyecto con ArtProduction.',messageLabels:['Qué necesito','Empresa y web','Plazo']},
+ ru: {label:'Бриф',title:'Расскажите о задаче.\nМы предложим, как её решить.',subtitle:'Ответим в течение рабочего дня. Первый разговор ни к чему вас не обязывает.',direct:'Или напишите нам напрямую',needsLabel:'Что вам необходимо',needsHint:'Можно выбрать несколько вариантов',needs:['Reels','Рекламный ролик','Съёмка мероприятия','Контент на месяц'],companyLabel:'Название компании или ссылка на сайт',companyPlaceholder:'Например, Café Sol или cafesol.es',timingLabel:'Когда нужен результат',timing:['Срочно','В этом месяце','Пока изучаем'],submit:'Обсудить проект в WhatsApp',note:'Бриф откроется в WhatsApp готовым сообщением — останется только отправить его.',greeting:'Здравствуйте! Бриф с сайта ArtProduction:',emptyMessage:'Здравствуйте! Хочу обсудить проект с ArtProduction.',messageLabels:['Что необходимо','Компания и сайт','Сроки']},
+ en: {label:'Brief',title:'Tell us about your challenge.\nWe’ll suggest how to solve it.',subtitle:'We reply within one business day. The first conversation comes with no obligation.',direct:'Or message us directly',needsLabel:'What do you need',needsHint:'You can choose several options',needs:['Reels','Promotional video','Event coverage','A month of content'],companyLabel:'Company name or website link',companyPlaceholder:'For example, Café Sol or cafesol.es',timingLabel:'When do you need the result',timing:['Urgently','This month','Still exploring'],submit:'Discuss the project on WhatsApp',note:'The brief opens in WhatsApp as a ready-made message — you only need to send it.',greeting:'Hello! A brief from the ArtProduction website:',emptyMessage:'Hello, I would like to discuss a project with ArtProduction.',messageLabels:['What I need','Company and website','Timing']}
+};
+
+/** Every answer is optional; an empty brief falls back to a general request (or the service chosen via ?service=). */
+export function buildBriefMessage(lang: Lang, needs: number[], company: string, timing: number | null, fallback = brief[lang].emptyMessage) {
+  const t=brief[lang], lines:string[]=[];
+  const selected=t.needs.filter((_,index)=>needs.includes(index));
+  if (selected.length) lines.push(`• ${t.messageLabels[0]}: ${selected.join(', ')}`);
+  if (company.trim()) lines.push(`• ${t.messageLabels[1]}: ${company.trim()}`);
+  if (timing!==null&&t.timing[timing]) lines.push(`• ${t.messageLabels[2]}: ${t.timing[timing]}`);
+  return lines.length?[t.greeting,...lines].join('\n'):fallback;
+}
