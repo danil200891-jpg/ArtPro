@@ -7,7 +7,7 @@ const esbuild = Module.createRequire(require.resolve('vite/package.json'))('esbu
 
 async function check() {
   const result = await esbuild.build({
-    stdin: {contents: "export {Testimonials, quoteParagraphs} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about'; export {brief, buildBriefMessage} from './brief';", loader: 'tsx', resolveDir: path.resolve('src')},
+    stdin: {contents: "export {Testimonials, quoteParagraphs} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about'; export {brief, buildBriefMessage} from './brief'; export {processSteps} from './process';", loader: 'tsx', resolveDir: path.resolve('src')},
     bundle: true, write: false, platform: 'node', format: 'cjs',
     external: ['react'], loader: {'.css': 'empty'}, define: {'import.meta.env.BASE_URL': '"/"'}
   });
@@ -15,7 +15,7 @@ async function check() {
   compiled.filename = __filename;
   compiled.paths = module.paths;
   compiled._compile(result.outputFiles[0].text, __filename);
-  const {Testimonials, quoteParagraphs, lemReview, getClientReviews, copy, services, aboutContent, brief, buildBriefMessage} = compiled.exports;
+  const {Testimonials, quoteParagraphs, lemReview, getClientReviews, copy, services, aboutContent, brief, buildBriefMessage, processSteps} = compiled.exports;
   for (const lang of Object.keys(copy)) {
     const reviews = getClientReviews(lang);
     assert.equal(lemReview[lang].text.trim().split(/\n\s*\n/).length, 6, `${lang}: LEM must contain all six paragraphs`);
@@ -33,6 +33,10 @@ async function check() {
       const fullText = paragraphs.map(paragraph => renderToStaticMarkup(React.createElement('p', null, paragraph))).join('');
       assert.ok(html.includes(fullText), `${lang}: selected ${review.id} review is not rendered in full`);
     }
+    const process = processSteps[lang];
+    assert.ok(process.label.trim() && process.title.trim(), `${lang}: missing process heading`);
+    assert.equal(process.steps.length, 4, `${lang}: process must have four steps`);
+    for (const step of process.steps) assert.ok(step.title.trim() && step.text.trim(), `${lang}: incomplete process step`);
     for (const [key, value] of Object.entries(brief.ru)) {
       if (Array.isArray(value)) assert.equal(brief[lang][key].length, value.length, `${lang}: incomplete brief ${key}`);
       else assert.ok(typeof brief[lang][key] === 'string' && brief[lang][key].trim(), `${lang}: missing brief ${key}`);
@@ -41,7 +45,7 @@ async function check() {
     const fullBrief = buildBriefMessage(lang, brief[lang].needs.map((_, index) => index), 'Test Co, test.es', 0);
     for (const need of brief[lang].needs) assert.ok(fullBrief.includes(need), `${lang}: brief message is missing ${need}`);
     assert.ok(fullBrief.includes('Test Co, test.es') && fullBrief.includes(brief[lang].timing[0]), `${lang}: brief message is missing answers`);
-    console.log(`${lang}: each of four reviews renders in full when selected; LEM has six complete paragraphs; service, section and brief counts match RU; brief message includes every answer`);
+    console.log(`${lang}: each of four reviews renders in full when selected; LEM has six complete paragraphs; service, section and brief counts match RU; brief message includes every answer; four process steps`);
   }
 }
 check().catch(error => {console.error(error); process.exitCode = 1;});

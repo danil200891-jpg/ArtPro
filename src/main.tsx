@@ -6,6 +6,7 @@ import {aboutContent} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
 import {Testimonials} from './ReviewCards';
+import {ProcessSteps} from './ProcessSteps';
 import {BriefForm} from './BriefForm';
 import './styles.css';
 import './visuals.css';
@@ -131,6 +132,8 @@ function App() {
       </section>
 
       <Testimonials lang={lang}/>
+
+      <ProcessSteps lang={lang}/>
 
       <BriefForm lang={lang} message={selected?message:undefined} whatsappUrl={whatsappUrl} instagramFirst={instagramFirst}
         selection={selected&&<p className="contact-selection">{ui.selected}: <span>{t.names[services.indexOf(selected)]}</span></p>}/>
