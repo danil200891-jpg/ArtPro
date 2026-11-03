@@ -22,9 +22,9 @@ export function getClientReviews(lang:Lang):ClientReview[] {
   ];
 }
 
-export const reviewLabels:Record<Lang,{expand:string;collapse:string}> = {
-  ru:{expand:'Читать полностью',collapse:'Свернуть'},
-  es:{expand:'Leer completo',collapse:'Mostrar menos'},
-  uk:{expand:'Читати повністю',collapse:'Згорнути'},
-  en:{expand:'Read full review',collapse:'Show less'}
+export const reviewLabels:Record<Lang,{expand:string;collapse:string;section:string;title:string;choose:string}> = {
+  ru:{expand:'Читать полностью',collapse:'Свернуть',section:'Отзывы',title:'Что говорят наши клиенты?',choose:'Выберите отзыв'},
+  es:{expand:'Leer completo',collapse:'Mostrar menos',section:'Opiniones',title:'¿Qué dicen nuestros clientes?',choose:'Elijan una opinión'},
+  uk:{expand:'Читати повністю',collapse:'Згорнути',section:'Відгуки',title:'Що кажуть наші клієнти?',choose:'Оберіть відгук'},
+  en:{expand:'Read full review',collapse:'Show less',section:'Reviews',title:'What do our clients say?',choose:'Choose a review'}
 };

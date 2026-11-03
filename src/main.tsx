@@ -5,7 +5,7 @@ import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
-import {ReviewCards} from './ReviewCards';
+import {Testimonials} from './ReviewCards';
 import {BriefForm} from './BriefForm';
 import './styles.css';
 import './visuals.css';
@@ -101,9 +101,6 @@ function App() {
           <h2 id="about-title">{about.title}</h2>
           <div className="about-story">{about.paragraphs.map((p,index)=><p key={p}>{index===1||index===about.paragraphs.length-1?<strong>{p}</strong>:p}</p>)}</div>
         </div>
-        <AboutAccordion title={about.reviewsTitle} icon={MessageSquare}>
-          <ReviewCards lang={lang}/>
-        </AboutAccordion>
         <AboutAccordion title={about.approach} icon={Handshake}>
           <ul className="about-benefits">{about.items.map(item=><li key={item}><strong>{item.slice(0,item.indexOf('.')+1)}</strong>{item.slice(item.indexOf('.')+1)}</li>)}</ul>
         </AboutAccordion>
@@ -132,6 +129,8 @@ function App() {
         </div>)}</div>
         <aside className="pricing-note"><p>{ui.pricingNote}</p></aside>
       </section>
+
+      <Testimonials lang={lang}/>
 
       <BriefForm lang={lang} message={selected?message:undefined} whatsappUrl={whatsappUrl} instagramFirst={instagramFirst}
         selection={selected&&<p className="contact-selection">{ui.selected}: <span>{t.names[services.indexOf(selected)]}</span></p>}/>

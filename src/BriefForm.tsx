@@ -21,7 +21,7 @@ export function BriefForm({lang, message, whatsappUrl, instagramFirst, selection
 
   return <section className="section brief" id="contact" aria-labelledby="brief-title">
     <div className="ambient-glow" aria-hidden="true"/>
-    <div className="section-label"><span>03 / {t.label}</span></div>
+    <div className="section-label"><span>04 / {t.label}</span></div>
     <div className="brief-layout">
       <div className="brief-intro">
         <h2 id="brief-title">{t.title}</h2><p>{t.subtitle}</p>
