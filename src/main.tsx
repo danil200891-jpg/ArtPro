@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {Handshake, MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Instagram, MessageCircle, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
+import {Handshake, MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent} from './about';
 import {presentation} from './presentation';
@@ -133,18 +133,8 @@ function App() {
         <aside className="pricing-note"><p>{ui.pricingNote}</p></aside>
       </section>
 
-      <section className="section contact" id="contact" aria-labelledby="contact-title">
-        <div className="ambient-glow" aria-hidden="true"/>
-        <div className="section-label"><span>03 / {t.nav[3]}</span></div>
-        <div className="contact-layout"><h2 id="contact-title">{t.contactTitle}</h2><div className="contact-details"><p>{t.contactText}</p>
-          {selected&&<p className="contact-selection">{ui.selected}: <span>{t.names[services.indexOf(selected)]}</span></p>}
-          <div className="contact-actions">{(instagramFirst?['instagram','whatsapp']:['whatsapp','instagram']).map((channel,index)=><a key={channel} className={'button '+(index===0?'primary':'secondary')} href={channel==='whatsapp'?whatsappUrl:contacts.instagram} target="_blank" rel="noopener noreferrer">
-            {channel==='whatsapp'?<MessageCircle size={19}/>:<Instagram size={19}/>}{channel==='whatsapp'?'WhatsApp':'Instagram'}<ArrowUpRight size={18}/>
-          </a>)}</div>
-        </div></div>
-      </section>
-
-      <BriefForm lang={lang} message={selected?message:undefined} whatsappUrl={whatsappUrl} instagramFirst={instagramFirst}/>
+      <BriefForm lang={lang} message={selected?message:undefined} whatsappUrl={whatsappUrl} instagramFirst={instagramFirst}
+        selection={selected&&<p className="contact-selection">{ui.selected}: <span>{t.names[services.indexOf(selected)]}</span></p>}/>
     </main>
     <footer><span>ArtProduction</span><p>© {new Date().getFullYear()} · {t.rights}</p><span>{e.city}</span></footer>
   </>;

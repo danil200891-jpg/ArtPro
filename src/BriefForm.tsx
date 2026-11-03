@@ -4,10 +4,10 @@ import {contacts, type Lang} from './services';
 import {brief, buildBriefMessage} from './brief';
 import './brief.css';
 
-type Props = {lang: Lang; message?: string; whatsappUrl: string; instagramFirst: boolean};
+type Props = {lang: Lang; message?: string; whatsappUrl: string; instagramFirst: boolean; selection?: React.ReactNode};
 
-/** Brief section after contacts: direct channels on the left, an optional brief sent to WhatsApp on the right. */
-export function BriefForm({lang, message, whatsappUrl, instagramFirst}: Props) {
+/** Final section (#contact): direct channels on the left, an optional brief sent to WhatsApp on the right. */
+export function BriefForm({lang, message, whatsappUrl, instagramFirst, selection}: Props) {
   const t=brief[lang];
   const [needs, setNeeds] = useState<number[]>([]);
   const [company, setCompany] = useState('');
@@ -19,12 +19,13 @@ export function BriefForm({lang, message, whatsappUrl, instagramFirst}: Props) {
   };
   const channels=instagramFirst?['instagram','whatsapp']:['whatsapp','instagram'];
 
-  return <section className="section brief" id="brief" aria-labelledby="brief-title">
+  return <section className="section brief" id="contact" aria-labelledby="brief-title">
     <div className="ambient-glow" aria-hidden="true"/>
-    <div className="section-label"><span>04 / {t.label}</span></div>
+    <div className="section-label"><span>03 / {t.label}</span></div>
     <div className="brief-layout">
       <div className="brief-intro">
         <h2 id="brief-title">{t.title}</h2><p>{t.subtitle}</p>
+        {selection}
         <div className="brief-direct"><span>{t.direct}</span>
           <div className="brief-links">{channels.map(channel=><a key={channel} className="brief-link" href={channel==='whatsapp'?whatsappUrl:contacts.instagram} target="_blank" rel="noopener noreferrer">
             {channel==='whatsapp'?<MessageCircle size={17} aria-hidden="true"/>:<Instagram size={17} aria-hidden="true"/>}{channel==='whatsapp'?'WhatsApp':'Instagram'}<ArrowUpRight size={15} aria-hidden="true"/>
