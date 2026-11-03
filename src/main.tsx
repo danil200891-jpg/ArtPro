@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {Handshake, MessageSquare, ChevronDown, ArrowUpRight, Menu, X, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
+import {ArrowUpRight, Menu, X, Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video} from 'lucide-react';
 import {copy, services, contacts, editorial, type Lang} from './config';
 import {aboutContent} from './about';
 import {presentation} from './presentation';
 import {productionDetails} from './productionDetails';
+import {ClientChallenges} from './ClientChallenges';
 import {Testimonials} from './ReviewCards';
 import {ProcessSteps} from './ProcessSteps';
 import {BriefForm} from './BriefForm';
@@ -17,16 +18,6 @@ const logoUrl = import.meta.env.BASE_URL + 'artproduction-logo.webp';
 const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video];
 const displayOrder = [...services.filter(s=>s.group===0), ...services.filter(s=>s.group===1)];
 const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',index:1},{id:'contact',index:3}];
-
-function AboutAccordion({title, icon: Icon, children}: {title:string; icon:typeof MessageSquare; children:React.ReactNode}) {
-  return <details className="about-reviews">
-    <summary>
-      <span className="reviews-heading"><Icon className="reviews-message" size={22} strokeWidth={1.5} aria-hidden="true"/><span className="reviews-title">{title}</span></span>
-      <ChevronDown className="reviews-arrow" size={22} strokeWidth={1.5} aria-hidden="true"/>
-    </summary>
-    {children}
-  </details>;
-}
 
 function App() {
   const [lang, setLang] = useState<Lang>(() => {
@@ -102,14 +93,13 @@ function App() {
           <h2 id="about-title">{about.title}</h2>
           <div className="about-story">{about.paragraphs.map((p,index)=><p key={p}>{index===1||index===about.paragraphs.length-1?<strong>{p}</strong>:p}</p>)}</div>
         </div>
-        <AboutAccordion title={about.approach} icon={Handshake}>
-          <ul className="about-benefits">{about.items.map(item=><li key={item}><strong>{item.slice(0,item.indexOf('.')+1)}</strong>{item.slice(item.indexOf('.')+1)}</li>)}</ul>
-        </AboutAccordion>
       </section>
+
+      <ClientChallenges lang={lang}/>
 
       <section className="section services" id="services" aria-labelledby="services-title">
         <div className="ambient-glow" aria-hidden="true"/>
-        <div className="section-label"><span>02 / {t.nav[1]}</span></div>
+        <div className="section-label"><span>03 / {t.nav[1]}</span></div>
         <h2 id="services-title">{ui.services}</h2>
         <div className="service-groups">{t.categories.map((category,group)=><div className="service-group" key={category}>
           <h3 className="category-title">{category}</h3>

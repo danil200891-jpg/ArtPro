@@ -51,7 +51,7 @@ export function Testimonials({lang, initialId}: {lang: Lang; initialId?: string}
 
   return <section className="section testimonials" id="reviews" aria-labelledby="reviews-title">
     <div className="ambient-glow" aria-hidden="true"/>
-    <div className="section-label"><span>03 / {labels.section}</span></div>
+    <div className="section-label"><span>04 / {labels.section}</span></div>
     <h2 id="reviews-title">{labels.title}</h2>
     <div className="testimonials-layout">
       <ul className="testimonial-list" aria-label={labels.choose}>{reviews.map(review=><li key={review.id}>
