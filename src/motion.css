@@ -9,20 +9,27 @@
 }
 @media(prefers-reduced-motion:no-preference){
  .brand-logo{animation:logo-enter 650ms ease-out both}
- .motion-pending:not(.motion-in){opacity:0}
- .motion-pending.motion-in{animation:content-enter 580ms cubic-bezier(.2,.65,.3,1) var(--reveal-delay,0ms) backwards}
+ /* Scroll reveal with catch-up: scrolling down, blocks glide in from 72px below and settle softly; scrolling up, a light 12px settle.
+    Hiding happens only off-screen and without a transition; every entry into view plays the reveal again. */
+ [data-reveal]{--reveal-duration:1200ms;--reveal-ease:cubic-bezier(.22,1,.36,1);transition:opacity calc(var(--reveal-duration) * .8) ease-out var(--reveal-delay,0ms),translate var(--reveal-duration) var(--reveal-ease) var(--reveal-delay,0ms)}
+ /* Service cards keep their hover lift (a 2px offset); the flip runs on the inner .service-flip layer. */
+ .service-card[data-reveal]{transition:top 250ms ease,opacity calc(var(--reveal-duration) * .8) ease-out var(--reveal-delay,0ms),translate var(--reveal-duration) var(--reveal-ease) var(--reveal-delay,0ms)}
+ [data-reveal=hidden]{opacity:0;translate:0 var(--reveal-from,72px);transition:none}
+ /* Scrolling up: a barely visible 12px settle, quick and immediate. */
+ [data-reveal][data-reveal-dir=up]{--reveal-duration:480ms}
  .ambient-glow:before{animation:ambient-drift 38s ease-in-out infinite alternate;animation-play-state:paused}
  .ambient-glow.ambient-active:before{animation-play-state:running}
  @keyframes logo-enter{from{opacity:0}to{opacity:1}}
- @keyframes content-enter{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
  @keyframes ambient-drift{from{transform:translate3d(-1%,0,0)}to{transform:translate3d(2%,1%,0)}}
 }
 @media(max-width:700px) and (prefers-reduced-motion:no-preference){
- .motion-pending.motion-in{animation-duration:480ms;animation-delay:0ms}
+ /* Phones: a shorter travel and quicker settle keep text readable while scrolling. */
+ [data-reveal]{--reveal-duration:1050ms}
+ [data-reveal][data-reveal-dir=up]{--reveal-duration:450ms}
  .ambient-glow:before{animation-duration:48s}
 }
 @media(prefers-reduced-motion:reduce){
- .motion-pending{opacity:1;translate:none}
+ [data-reveal]{opacity:1;translate:none;transition:none}
  .ambient-glow:before,.brand-logo{animation:none}
  .button{transition:none}
 }

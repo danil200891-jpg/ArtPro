@@ -23,15 +23,15 @@
 .brief-timing{grid-template-columns:repeat(3,minmax(0,1fr))}
 .brief-option{position:relative;display:flex;min-width:0;cursor:pointer}
 .brief-option input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
-.brief-option span{flex:1;display:flex;align-items:center;gap:11px;min-height:54px;padding:14px 16px;font-size:12px;line-height:1.45;border:1px solid #ffffff12;border-radius:4px;background-color:#8b111100;background-image:linear-gradient(145deg,#8b11110f,#8b111105 60%,#ffffff00);color:#dedbd8;transition:border-color .3s ease,box-shadow .3s ease,background-color .3s ease,color .3s ease}
-.brief-check{width:15px;height:15px;padding:1px;flex-shrink:0;border:1px solid #ffffff33;border-radius:2px;color:transparent;transition:border-color .2s ease,color .2s ease}
+.brief-option span{flex:1;display:flex;align-items:center;gap:11px;min-height:54px;padding:14px 16px;font-size:12px;line-height:1.45;border:1px solid #ffffff14;border-radius:14px;background-color:#8b111100;background-image:linear-gradient(145deg,#8b11110f,#8b111105 60%,#ffffff00);color:#dedbd8;transition:border-color .3s ease,box-shadow .3s ease,background-color .3s ease,color .3s ease}
+.brief-check{width:15px;height:15px;padding:1px;flex-shrink:0;border:1px solid #ffffff33;border-radius:4px;color:transparent;transition:border-color .2s ease,color .2s ease}
 .brief-option input[type=radio]+span .brief-check{border-radius:50%}
 .brief-option input:checked+span{border-color:var(--red);background-color:#8b111114;box-shadow:0 0 24px #ff2e2e1a;color:var(--white)}
 .brief-option input:checked+span .brief-check{border-color:var(--red);color:var(--red)}
-.brief-option input:focus-visible+span{outline:2px solid var(--red);outline-offset:4px}
-.brief-input{width:100%;font:inherit;font-size:14px;color:var(--white);background:transparent;border:0;border-bottom:1px solid #ffffff30;border-radius:0;padding:12px 0;transition:border-color .25s ease}
+.brief-option input:focus-visible+span{outline:2px solid var(--red);outline-offset:3px}
+.brief-input{width:100%;font:inherit;font-size:14px;color:var(--white);background:#ffffff06;border:1px solid #ffffff21;border-radius:11px;padding:13px 15px;transition:border-color .25s ease,background-color .25s ease}
 .brief-input::placeholder{color:#b8b1aa80}
-.brief-input:focus{outline:none;border-color:var(--red)}
+.brief-input:focus{outline:none;border-color:#ffffff59;background-color:#ffffff0a}
 .brief-actions{padding-top:4px}
 .brief-actions .button{gap:12px}
 .brief-note{font-size:11px;color:var(--muted);line-height:1.8;margin-top:-14px}

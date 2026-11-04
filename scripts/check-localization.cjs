@@ -7,7 +7,7 @@ const esbuild = Module.createRequire(require.resolve('vite/package.json'))('esbu
 
 async function check() {
   const result = await esbuild.build({
-    stdin: {contents: "export {Testimonials, quoteParagraphs} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about'; export {brief, buildBriefMessage} from './brief'; export {processSteps} from './process'; export {challenges} from './challenges';", loader: 'tsx', resolveDir: path.resolve('src')},
+    stdin: {contents: "export {Testimonials, quoteParagraphs} from './ReviewCards'; export {lemReview} from './lemReview'; export {getClientReviews} from './reviews'; export {copy} from './translations'; export {services} from './services'; export {aboutContent} from './about'; export {brief, buildBriefMessage} from './brief'; export {processSteps} from './process'; export {challenges} from './challenges'; export {serviceDetails} from './serviceDetails';", loader: 'tsx', resolveDir: path.resolve('src')},
     bundle: true, write: false, platform: 'node', format: 'cjs',
     external: ['react'], loader: {'.css': 'empty'}, define: {'import.meta.env.BASE_URL': '"/"'}
   });
@@ -15,7 +15,7 @@ async function check() {
   compiled.filename = __filename;
   compiled.paths = module.paths;
   compiled._compile(result.outputFiles[0].text, __filename);
-  const {Testimonials, quoteParagraphs, lemReview, getClientReviews, copy, services, aboutContent, brief, buildBriefMessage, processSteps, challenges} = compiled.exports;
+  const {Testimonials, quoteParagraphs, lemReview, getClientReviews, copy, services, aboutContent, brief, buildBriefMessage, processSteps, challenges, serviceDetails} = compiled.exports;
   for (const lang of Object.keys(copy)) {
     const reviews = getClientReviews(lang);
     assert.equal(lemReview[lang].text.trim().split(/\n\s*\n/).length, 6, `${lang}: LEM must contain all six paragraphs`);
@@ -37,6 +37,13 @@ async function check() {
     assert.ok(challenge.label.trim() && challenge.title.trim() && challenge.intro.trim(), `${lang}: missing challenges heading`);
     assert.equal(challenge.rows.length, 4, `${lang}: challenges must have four rows`);
     for (const row of challenge.rows) assert.ok(row.problem.trim() && row.solution.trim() && row.text.trim(), `${lang}: incomplete challenge row`);
+    const details = serviceDetails[lang];
+    for (const key of ['more', 'included', 'close']) assert.ok(details[key].trim(), `${lang}: missing service card ${key}`);
+    for (const [id, items] of Object.entries(serviceDetails.ru.items)) {
+      assert.ok(services.some(service => service.id === id), `${id}: unknown service`);
+      assert.equal(details.items[id].length, items.length, `${lang}: ${id} must list ${items.length} included items`);
+      for (const item of details.items[id]) assert.ok(item.trim(), `${lang}: empty ${id} item`);
+    }
     const process = processSteps[lang];
     assert.ok(process.label.trim() && process.title.trim(), `${lang}: missing process heading`);
     assert.equal(process.steps.length, 4, `${lang}: process must have four steps`);
@@ -49,7 +56,7 @@ async function check() {
     const fullBrief = buildBriefMessage(lang, brief[lang].needs.map((_, index) => index), 'Test Co, test.es', 0);
     for (const need of brief[lang].needs) assert.ok(fullBrief.includes(need), `${lang}: brief message is missing ${need}`);
     assert.ok(fullBrief.includes('Test Co, test.es') && fullBrief.includes(brief[lang].timing[0]), `${lang}: brief message is missing answers`);
-    console.log(`${lang}: each of four reviews renders in full when selected; LEM has six complete paragraphs; service, section and brief counts match RU; brief message includes every answer; four challenge rows; four process steps`);
+    console.log(`${lang}: each of four reviews renders in full when selected; LEM has six complete paragraphs; service, section and brief counts match RU; brief message includes every answer; four challenge rows; four process steps; service card backs match RU`);
   }
 }
 check().catch(error => {console.error(error); process.exitCode = 1;});

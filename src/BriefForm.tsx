@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ArrowUpRight, Check, Instagram, MessageCircle} from 'lucide-react';
 import {contacts, type Lang} from './services';
 import {brief, buildBriefMessage} from './brief';
+import {WhatsAppIcon} from './WhatsAppIcon';
 import './brief.css';
 
 type Props = {lang: Lang; message?: string; whatsappUrl: string; instagramFirst: boolean; selection?: React.ReactNode};
@@ -53,7 +54,7 @@ export function BriefForm({lang, message, whatsappUrl, instagramFirst, selection
           </label>)}</div>
         </fieldset>
         <div className="brief-actions">
-          <button type="submit" className="button primary"><MessageCircle size={19}/>{t.submit}<ArrowUpRight size={18}/></button>
+          <button type="submit" className="button primary"><WhatsAppIcon size={19}/>{t.submit}<ArrowUpRight size={18}/></button>
         </div>
         <p className="brief-note">{t.note}</p>
       </form>

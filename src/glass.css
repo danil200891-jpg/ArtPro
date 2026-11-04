@@ -1,0 +1,130 @@
+/* Premium frosted glass: translucent graphite cards and glass buttons lit by a small red LED under their centre; on cards red stays in the icons. */
+:root{--glass-fill:linear-gradient(160deg,#ffffff10,#ffffff04 38%,#ffffff02 70%,#ffffff06),#0e0e11b8;--glass-shine:inset 0 1px 0 #ffffff26,inset 0 -1px 0 #0000004d,inset 0 0 0 1px #ffffff05;--glass-blur:blur(16px) saturate(140%);--glass-text:#c4c1be;--flip-ease:cubic-bezier(.65,0,.35,1);--button-glass:linear-gradient(180deg,#ffffff1a,#ffffff08 55%,#ffffff0d),#1c1c2066;--button-glass-hover:linear-gradient(180deg,#ffffff26,#ffffff0d 55%,#ffffff14),#24242a73}
+
+/* Grid: two wide cards per row, as in the reference; video services first, then digital. */
+.service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;border:0}
+
+/* The card is the reveal target; .service-flip is the rotating layer, so their transforms never collide. */
+/* The hover lift uses a relative offset, not a transform, so text and edges inside the 3D layer stay pixel-sharp. */
+.service-card{position:relative;top:0;min-width:0;display:flex;scroll-margin-top:30px;perspective:1800px;border-radius:24px;transition:top 250ms ease}
+.service-card.selected{border:0;padding-left:0}
+.service-flip{flex:1;display:grid;position:relative;transform-style:preserve-3d;transition:transform 600ms var(--flip-ease)}
+.service-card.is-flipped .service-flip{transform:rotateY(180deg)}
+.service-face{grid-area:1/1;position:relative;isolation:isolate;min-width:0;display:flex;flex-direction:column;padding:26px 28px 24px;border-radius:24px;border:1px solid #ffffff1f;background:var(--glass-fill);box-shadow:var(--glass-shine),0 30px 60px -30px #000000d9,0 2px 12px #00000059;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:border-color 250ms ease,box-shadow 250ms ease}
+.is-flippable .service-face{cursor:pointer}
+.service-back{transform:rotateY(180deg)}
+/* Frame: silver, catching light at the top-left and bottom-right corners like the reference. */
+.service-face:before{content:'';position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:linear-gradient(140deg,#ffffff6b,#ffffff1a 22%,#ffffff0d 55%,#ffffff1a 80%,#ffffff4d);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.75;transition:opacity 250ms ease;pointer-events:none}
+/* Inner reflection: a soft diagonal sheen across the glass, a little brighter on hover. */
+.service-face:after{content:'';position:absolute;inset:0;z-index:-2;border-radius:inherit;background:linear-gradient(115deg,#ffffff12,#ffffff05 24%,transparent 42%),linear-gradient(295deg,#ffffff0a,transparent 30%);opacity:.7;transition:opacity 250ms ease;pointer-events:none}
+/* Interaction tint: a barely visible red light from the icon, shown on hover (mouse) or while pressed (touch). */
+.service-tint{position:absolute;inset:0;z-index:-2;border-radius:inherit;background:radial-gradient(85% 80% at 10% 6%,#ff303d26,#ff303d0d 45%,transparent 75%);opacity:0;transition:opacity 250ms ease;pointer-events:none}
+.service-back .service-tint{background:radial-gradient(85% 80% at 90% 6%,#ff303d14,#ff303d06 45%,transparent 75%)}
+.service-card.selected .service-face{border-color:#ffffff26}
+
+/* Front: icon, title, description, divider, then price on the left and the flip control on the right. */
+.service-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.service-number{padding-top:4px;font-size:12px;font-weight:500;letter-spacing:1.4px;color:#ffffffa6}
+/* The icon is the card's only red light: a small LED inside the glass square with a halo that dissolves into the card. */
+.service-icon{position:relative;width:56px;height:56px;flex-shrink:0;display:grid;place-items:center;border-radius:14px;border:1px solid #ff2e2e40;background:radial-gradient(circle at 50% 50%,#ff2e2e2e,#ff2e2e0d 55%,transparent 80%),linear-gradient(160deg,#ffffff12,#ffffff03 60%),#0d0d0f;box-shadow:inset 0 1px 0 #ffffff1f,inset 0 0 14px #ff2e2e26,0 0 18px -2px #ff2e2e4d,0 10px 20px -12px #000;transition:box-shadow 250ms ease,border-color 250ms ease}
+.service-icon:before{content:'';position:absolute;z-index:-1;left:50%;top:50%;width:108px;height:100px;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,#ff2e2e38,#ff2e2e14 50%,transparent);opacity:.85;transition:opacity 250ms ease;pointer-events:none}
+.service-icon svg{width:30px;height:30px;color:#ff3b3b;filter:drop-shadow(0 0 5px #ff2e2e99) drop-shadow(0 0 12px #ff2e2e4d);transition:filter 250ms ease}
+.service-text{padding:18px 0 22px}
+.service-text h4,.service-back-head h4{font-size:clamp(21px,1.75vw,27px);font-weight:700;letter-spacing:-.6px;line-height:1.18;color:#fff}
+.service-text p{margin-top:9px;max-width:520px;font-size:14px;line-height:1.55;color:var(--glass-text)}
+.service-text .selected-label{margin-top:10px}
+.service-footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid #ffffff17}
+.service-cost{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;min-width:0}
+.service-cost>span{font-size:14px;color:#c9c6c3}
+.service-cost strong{font-size:clamp(26px,2.2vw,32px);font-weight:700;letter-spacing:-.8px;line-height:1.1;white-space:nowrap;color:#fff}
+.service-cost .price-currency{font-weight:700;color:#fff}
+.service-cost small{font-size:14px;color:#c9c6c3;white-space:nowrap}
+
+/* Back: same glass; title with close control, divider, compact list and the discussion button. */
+.service-back-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid #ffffff17}
+.service-back-head h4{font-size:clamp(19px,1.5vw,22px);padding-top:3px}
+.service-close{width:34px;height:34px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;border:1px solid #ffffff2b;background:#ffffff0a;color:#fff;transition:border-color .25s ease,background-color .25s ease}
+.service-included{margin-top:14px;display:flex;align-items:center;gap:8px;font-size:10px;text-transform:uppercase;letter-spacing:1.6px;color:#ffffff8c}
+.service-included:before{content:'';width:4px;height:4px;border-radius:50%;background:#ffffffb3}
+.service-includes{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.service-includes li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.42;color:#ecebe9}
+.service-includes li>span{width:17px;height:17px;margin-top:0;flex-shrink:0;display:grid;place-items:center;border-radius:50%;border:1px solid #ffffff3d;background:#ffffff0d;color:#fff}
+/* Wide cards split the list in two columns so the back stays as compact as the front. */
+.service-back{container-type:inline-size}
+@container (min-width:420px){.service-includes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 22px}}
+@container (min-width:540px){.service-includes{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 18px}}
+.service-note{margin-top:12px;padding:9px 12px;border-radius:12px;border:1px solid #ffffff1c;background:#ffffff08;font-size:12px;line-height:1.5;color:#fff}
+.service-discuss{align-self:flex-end;margin-top:auto}
+.service-back>:nth-last-child(2){margin-bottom:18px}
+
+/* Glow intensity is a registered number so the light can brighten smoothly on hover. */
+@property --glow-boost{syntax:'<number>';inherits:true;initial-value:1}
+/* Frosted glass buttons, shared by the cards and the site's main calls to action: dark translucent glass, silver edge,
+   and one red light source behind the lower centre: an inner glow inside the glass plus a softer outer glow below it.
+   The glass lives on ::before and the outer glow on ::after; hover scales the whole button 4% from its centre,
+   so glass, edge, light, text and icons grow together. */
+.glass-pill,.button{--glow-strength:1;--halo-strength:.9;--button-edge:#ffffff3d;--button-glass-bg:linear-gradient(90deg,#ff4b5500 12%,#ff4b55f2 50%,#ff4b5500 88%) center bottom/100% 1.5px no-repeat,linear-gradient(180deg,#ffffff1c,#ffffff05 48%,#ffffff00 60%),radial-gradient(ellipse 70% 48% at 50% 100%,rgb(255 35 45/calc(.82*var(--glow-strength)*var(--glow-boost))) 0%,rgb(255 30 45/calc(.45*var(--glow-strength)*var(--glow-boost))) 34%,rgb(255 20 35/calc(.12*var(--glow-strength)*var(--glow-boost))) 68%,transparent 100%),var(--button-glass);--button-shadow:inset 0 1px 0 #ffffff33,inset 0 -1px 0 #0000004d,0 10px 24px -14px #000000b3;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid transparent;background:transparent;box-shadow:none;color:#fff;transform-origin:center;transition:--glow-boost 280ms ease,transform 280ms cubic-bezier(.22,1,.36,1)}
+/* The glass shell: fill, silver edge, top highlight, inner red glow and backdrop blur, sized exactly like the button. */
+.glass-pill:before,.button:before{content:'';position:absolute;inset:-1px;z-index:-1;border-radius:inherit;border:1px solid var(--button-edge);background:var(--button-glass-bg);box-shadow:var(--button-shadow);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);transition:border-color 280ms ease,box-shadow 280ms ease;pointer-events:none}
+/* Outer glow: the same horizontal shape continuing just below the lower edge, softer and more diffuse. */
+.glass-pill:after,.button:after{content:'';position:absolute;z-index:-2;left:12%;right:12%;top:calc(100% - 8px);height:20px;border-radius:50%;background:radial-gradient(ellipse 50% 50% at 50% 40%,#ff232de6,#ff1e2d73 45%,transparent 100%);filter:blur(7px) brightness(1);opacity:var(--halo-strength);transition:opacity 280ms ease,filter 280ms ease;pointer-events:none}
+/* Card buttons keep the same light, scaled down for their size; the brief submit is the most expressive. */
+.glass-pill{--glow-strength:.7;--halo-strength:.5}
+.service-discuss{--glow-strength:.85;--halo-strength:.65}
+.brief-actions .button{--glow-strength:1;--halo-strength:.9}
+.glass-pill{flex-shrink:0;gap:10px;min-height:46px;padding:11px 24px;font-size:14px;font-weight:500;line-height:1.2;white-space:nowrap}
+.glass-pill svg,.button svg{flex-shrink:0;color:#fff}
+.button.secondary{--button-edge:#ffffff2b}
+.button.secondary:after{content:none}
+/* The button itself stays transparent in every state; this outranks the old solid-red .primary rules in styles.css, on touch screens too. */
+.button.primary,.button.primary:hover,.button.primary:active,.button.primary:focus{background:transparent;box-shadow:none}
+/* Neutral focus ring for glass controls, replacing the global red outline. */
+.glass-pill:focus-visible,.button:focus-visible,.service-close:focus-visible{outline:2px solid #ffffffb3;outline-offset:3px}
+.glass-pill:focus:not(:focus-visible),.service-close:focus:not(:focus-visible){outline:none}
+
+@media(hover:hover) and (pointer:fine){
+ .service-card:hover{top:-2px}
+ .service-card:hover .service-face{border-color:#ffffff3d;box-shadow:inset 0 1px 0 #ffffff33,inset 0 -1px 0 #0000004d,inset 0 0 0 1px #ffffff08,0 36px 64px -28px #000,0 4px 18px #00000073}
+ .service-card:hover .service-face:before,.service-card:hover .service-face:after{opacity:1}
+ .service-card:hover .service-tint{opacity:1}
+ .service-card:hover .service-icon{border-color:#ff2e2e66;box-shadow:inset 0 1px 0 #ffffff24,inset 0 0 16px #ff2e2e3d,0 0 24px 0 #ff2e2e66,0 10px 20px -12px #000}
+ .service-card:hover .service-icon:before{opacity:1}
+ .service-card:hover .service-icon svg{filter:drop-shadow(0 0 6px #ff2e2ebf) drop-shadow(0 0 16px #ff2e2e66)}
+ .service-close:hover{border-color:#ffffff4d;background-color:#ffffff12}
+ /* Also outranks the older solid-red .primary:hover rules in styles.css and motion.css. */
+ /* Hover: the whole button grows 4% from the centre; the edge and the light brighten slightly. */
+ .glass-pill:hover,.button:hover{--glow-boost:1.12;transform:scale(1.04)}
+ .glass-pill:hover:before,.button:hover:before{border-color:#ffffff5c;box-shadow:inset 0 1px 0 #ffffff47,inset 0 -1px 0 #0000004d,0 14px 28px -14px #000000b3}
+ .glass-pill:hover:after,.button:hover:after{filter:blur(7px) brightness(1.12)}
+ .service-more:hover:after{opacity:calc(var(--halo-strength) + .15)}
+}
+
+/* Touch screens: the same tint and icon glow only while the card is pressed; nothing stays after release or a flip. */
+@media(hover:none){
+ .glass-pill:active,.button:active{transform:scale(1.04)}
+ .service-card:active .service-tint{opacity:1;transition-duration:120ms}
+ .service-card:active .service-icon svg{filter:drop-shadow(0 0 6px #ff2e2ebf) drop-shadow(0 0 16px #ff2e2e66)}
+}
+
+/* Below laptop width one wide card per row keeps the reference proportions; phones get a lighter blur. */
+@media(max-width:1000px){.service-list{grid-template-columns:minmax(0,1fr);gap:18px}}
+@media(max-width:760px){
+ .service-list{gap:16px}
+ .service-card,.service-face{border-radius:22px}
+ .service-face{padding:20px 20px 20px;box-shadow:var(--glass-shine),0 16px 34px -20px #000000d9;--glass-blur:blur(12px) saturate(130%)}
+ .service-icon{width:52px;height:52px;border-radius:13px}
+ .service-icon svg{width:28px;height:28px}
+ .service-text{padding:16px 0 18px}
+ .service-text h4{font-size:22px}
+ .service-text p{font-size:13px}
+ .service-footer{padding-top:16px;gap:12px}
+ .service-cost strong{font-size:26px}
+ .service-cost>span,.service-cost small{font-size:13px}
+ .glass-pill{min-height:44px;padding:10px 20px;font-size:13px}
+}
+@media(max-width:380px){.service-face{padding:18px 16px}.service-footer{gap:10px}.service-cost strong{font-size:24px}.glass-pill{padding:10px 15px;gap:8px}}
+@media(max-width:330px){.service-footer{flex-wrap:wrap}}
+/* Without backdrop blur the glass gets a denser fill so text stays readable. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.service-face{background:linear-gradient(160deg,#ffffff12,#ffffff05 40%,#ffffff03),#141417eb}.glass-pill:before,.button:before{background:linear-gradient(180deg,#ffffff1a,#ffffff08),#18181bf0}}
+/* Without motion the card simply switches sides; styles.css already removes transitions globally. */
+@media(prefers-reduced-motion:reduce){.service-card:hover{top:0}.glass-pill:hover,.button:hover{transform:none}}

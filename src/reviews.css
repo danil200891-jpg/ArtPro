@@ -6,7 +6,7 @@
 
 /* Client list. */
 .testimonial-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.testimonial-item{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:14px;width:100%;padding:12px 14px;text-align:left;background:transparent;color:inherit;border:1px solid var(--line);border-radius:4px;transition:background-color .3s ease,border-color .3s ease}
+.testimonial-item{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:14px;width:100%;padding:12px 14px;text-align:left;background:transparent;color:inherit;border:1px solid #ffffff1c;border-radius:14px;background:linear-gradient(160deg,#ffffff08,#ffffff02);box-shadow:inset 0 1px 0 #ffffff0d;transition:background-color .3s ease,border-color .3s ease}
 /* One logo frame for every client: images scale inside it without distortion. */
 .testimonial-item-logo,.testimonial-author-logo{display:block;width:64px;height:40px;flex-shrink:0}
 .testimonial-logo-img{display:block;width:100%;height:100%;object-fit:contain}
@@ -17,7 +17,8 @@
 .testimonial-item[aria-pressed=true] .testimonial-item-name{color:var(--white)}
 
 /* Selected review. */
-.testimonial-featured{--testimonial-height:236px;margin:0;min-width:0}
+/* The review sits on a quiet glass panel matching the service cards; backgrounds clip to its 16px corners. */
+.testimonial-featured{--testimonial-height:236px;margin:0;min-width:0;padding:22px 24px;border:1px solid #ffffff1c;border-radius:16px;background:linear-gradient(160deg,#ffffff0a,#ffffff02 45%),#0e0e11b3;box-shadow:inset 0 1px 0 #ffffff12;overflow:hidden}
 .testimonial-mark{display:block;color:var(--red);margin-bottom:12px}
 .testimonial-body{height:var(--testimonial-height);overflow:hidden;transition:height 420ms cubic-bezier(.2,.65,.3,1)}
 .testimonial-body[data-overflow=true][data-expanded=false]{-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%)}
@@ -43,6 +44,6 @@
 @media(max-width:1000px){.testimonial-featured{--testimonial-height:250px}}
 /* Stacked layout: a compact two-column client switcher above the review. */
 @media(max-width:900px){.testimonials-layout{grid-template-columns:minmax(0,1fr);gap:22px}.testimonial-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.testimonial-item{grid-template-columns:48px minmax(0,1fr);gap:10px;height:100%;padding:10px 12px}.testimonial-item-logo{width:48px;height:30px}.testimonial-item-excerpt{display:none}}
-@media(max-width:700px){.testimonials>h2{font-size:25px;letter-spacing:-.8px;margin-bottom:20px}.testimonial-featured{--testimonial-height:250px}.testimonial-mark{width:22px;height:22px;margin-bottom:10px}.testimonial-quote p{font-size:13px;line-height:1.75}.testimonial-quote p+p{margin-top:8px}.testimonial-item-name{font-size:12px}.testimonial-author-logo{width:56px;height:34px}.testimonial-identity{min-height:80px}}
+@media(max-width:700px){.testimonial-featured{padding:18px}.testimonials>h2{font-size:25px;letter-spacing:-.8px;margin-bottom:20px}.testimonial-featured{--testimonial-height:250px}.testimonial-mark{width:22px;height:22px;margin-bottom:10px}.testimonial-quote p{font-size:13px;line-height:1.75}.testimonial-quote p+p{margin-top:8px}.testimonial-item-name{font-size:12px}.testimonial-author-logo{width:56px;height:34px}.testimonial-identity{min-height:80px}}
 @media(max-width:360px){.testimonial-item{grid-template-columns:40px minmax(0,1fr);padding:9px 10px}.testimonial-item-logo{width:40px;height:26px}.testimonial-item-name{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.testimonial-body,.testimonial-toggle svg,.testimonial-item,.testimonial-item-name{transition:none}}

@@ -9,14 +9,20 @@ import {ClientChallenges} from './ClientChallenges';
 import {Testimonials} from './ReviewCards';
 import {ProcessSteps} from './ProcessSteps';
 import {BriefForm} from './BriefForm';
+import {ServiceCard} from './ServiceCard';
+import {serviceDetails} from './serviceDetails';
 import './styles.css';
 import './visuals.css';
 import './motion.css';
+import './glass.css';
 import {usePageMotion} from './usePageMotion';
 
 const logoUrl = import.meta.env.BASE_URL + 'artproduction-logo.webp';
 const serviceIcons = [Clapperboard, Film, CalendarDays, Layers, Camera, Share2, Target, Video];
-const displayOrder = [...services.filter(s=>s.group===0), ...services.filter(s=>s.group===1)];
+// Photography and filming without editing are no longer offered; their data stays for old links.
+const hiddenServices: readonly string[] = ['photography','raw-footage'];
+const visibleServices = services.filter(s=>!hiddenServices.includes(s.id));
+const displayOrder = [...visibleServices.filter(s=>s.group===0), ...visibleServices.filter(s=>s.group===1)];
 const navigation = [{id:'home',index:0},{id:'about',index:2},{id:'services',index:1},{id:'contact',index:3}];
 
 function App() {
@@ -25,7 +31,7 @@ function App() {
     catch { return 'es'; }
   });
   const [menu, setMenu] = useState(false);
-  const t=copy[lang], e=editorial[lang], about=aboutContent[lang], ui=presentation[lang], details=productionDetails[lang];
+  const t=copy[lang], e=editorial[lang], about=aboutContent[lang], ui=presentation[lang], details=productionDetails[lang], included=serviceDetails[lang];
   usePageMotion(lang);
   const params=new URLSearchParams(window.location.search);
   const selected=services.find(service=>service.id===params.get('service'));
@@ -103,19 +109,13 @@ function App() {
         <h2 id="services-title">{ui.services}</h2>
         <div className="service-groups">{t.categories.map((category,group)=><div className="service-group" key={category}>
           <h3 className="category-title">{category}</h3>
-          <div className="service-list">{services.map((service,index)=>{
-            const Icon=serviceIcons[index];
-            return service.group===group&&<article id={service.id} key={service.id} className={'service-card service-'+service.id+(selected?.id===service.id?' selected':'')}>
-              <div className="service-visual" aria-hidden="true">
-                <div className="visual-grid"/><div className="visual-frame"/>
-                <span className="visual-index">{String(displayOrder.indexOf(service)+1).padStart(2,'0')}</span>
-                <div className="visual-icon"><Icon strokeWidth={1.15}/></div>
-                <span className="visual-corner"/>
-              </div>
-              <div className="card-content"><div className="service-description"><h4>{t.names[index]}</h4><p>{t.descriptions[index]}</p>{service.id==='reels'&&<p className="service-condition">{details.reelsMinimum}</p>}{selected?.id===service.id&&<span className="selected-label">{t.selected}</span>}</div>
-                <div className="service-price"><div>{service.id!=='raw-footage'&&<span>{t.from}</span>}<strong>{service.price}{' '}<span className="price-currency">€</span></strong></div><span>{t.units[index]}</span></div>
-              </div>
-            </article>;
+          <div className="service-list">{displayOrder.filter(service=>service.group===group).map(service=>{
+            const index=services.indexOf(service);
+            return <ServiceCard key={service.id} id={service.id} number={String(displayOrder.indexOf(service)+1).padStart(2,'0')} Icon={serviceIcons[index]}
+              name={t.names[index]} description={t.descriptions[index]} from={t.from} price={service.price} unit={t.units[index]}
+              selected={selected?.id===service.id?t.selected:undefined} items={included.items[service.id as keyof typeof included.items]}
+              note={service.id==='reels'?details.reelsMinimum:undefined} labels={{more:included.more,included:included.included,close:included.close,discuss:ui.contact}}
+              discussUrl={contacts.whatsapp+'?text='+encodeURIComponent(t.serviceMessage+t.names[index])}/>;
           })}</div>
         </div>)}</div>
         <aside className="pricing-note"><p>{ui.pricingNote}</p></aside>
