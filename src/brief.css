@@ -8,16 +8,25 @@
 .brief-intro>p{font-size:13px;line-height:1.9;color:var(--muted);margin-top:26px;max-width:420px}
 .brief-intro .contact-selection{font-size:12px;margin-top:14px}
 .brief-direct{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);max-width:420px}
-.brief-direct>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:var(--muted);margin-bottom:14px}
-.brief-links{display:flex;flex-wrap:wrap;gap:12px 28px}
-.brief-link{display:inline-flex;align-items:center;gap:9px;padding:6px 0;font-size:13px;font-weight:500;border-bottom:1px solid #ffffff30;transition:border-color .25s ease,color .25s ease}
-.brief-link svg:first-child{color:var(--red)}
+.brief-direct>h3{font-size:15px;font-weight:600;letter-spacing:-.2px;line-height:1.45;color:var(--white);margin-bottom:14px}
+/* Way 1 — write directly: two quiet glass buttons side by side; noticeable through shape, edge and icon, not red. */
+.brief-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.brief-link{min-width:0;display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid #ffffff26;border-radius:12px;background:linear-gradient(180deg,#ffffff0d,#ffffff03),#0e0e11b3;box-shadow:inset 0 1px 0 #ffffff14;font-size:14px;font-weight:500;line-height:1.2;color:var(--white);transition:border-color .25s ease,background-color .25s ease}
+.brief-link>span{flex:1;min-width:0;white-space:nowrap}
+.brief-link svg{flex-shrink:0;color:#f0ede9}
 .brief-link svg:last-child{color:var(--muted);transition:color .25s ease}
+/* «or» divider between the two ways to start. */
+.brief-or{display:flex;align-items:center;gap:14px;margin-bottom:24px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+.brief-or:before,.brief-or:after{content:'';flex:1;height:1px;background:#ffffff1a}
+/* Way 2 — the brief: what to do and what you get, before the first question. */
+.brief-start{margin-bottom:28px}
+.brief-start h3{font-size:20px;font-weight:600;letter-spacing:-.4px;line-height:1.35;color:var(--white)}
+.brief-start p{margin-top:8px;max-width:480px;font-size:13px;line-height:1.75;color:var(--muted)}
 .brief-form{display:flex;flex-direction:column;gap:30px}
 .brief-field{border:0;margin:0;padding:0;min-width:0}
-.brief-field legend,.brief-legend{display:flex;align-items:baseline;gap:12px;padding:0;margin-bottom:16px;font-size:15px;font-weight:500;letter-spacing:-.3px;line-height:1.5}
+.brief-field legend,.brief-legend{display:flex;align-items:baseline;gap:12px;padding:0;margin-bottom:16px;font-size:15px;font-weight:600;letter-spacing:-.3px;line-height:1.5}
 .brief-number{font-size:9px;letter-spacing:1.5px;color:var(--red);font-weight:500}
-.brief-hint{font-size:11px;color:var(--muted);margin:-8px 0 16px 25px;line-height:1.6}
+.brief-hint{font-size:12px;color:var(--muted);margin:-10px 0 16px 25px;line-height:1.6}
 .brief-options{display:grid;grid-auto-rows:1fr;gap:10px}
 .brief-needs{grid-template-columns:repeat(2,minmax(0,1fr))}
 .brief-timing{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -35,8 +44,8 @@
 .brief-actions{padding-top:4px}
 .brief-actions .button{gap:12px}
 .brief-note{font-size:11px;color:var(--muted);line-height:1.8;margin-top:-14px}
-@media(hover:hover) and (pointer:fine){.brief-option:hover span{border-color:#ff2e2e33;background-color:#8b111108;box-shadow:0 0 18px #ff2e2e0d}.brief-option:hover input:checked+span{background-color:#8b111114;box-shadow:0 0 28px #ff2e2e24}.brief-link:hover{border-color:var(--red)}.brief-link:hover svg:last-child{color:var(--white)}}
+@media(hover:hover) and (pointer:fine){.brief-option:hover span{border-color:#ff2e2e33;background-color:#8b111108;box-shadow:0 0 18px #ff2e2e0d}.brief-option:hover input:checked+span{background-color:#8b111114;box-shadow:0 0 28px #ff2e2e24}.brief-link:hover{border-color:#ffffff4d;background-color:#ffffff0a}.brief-link:hover svg:last-child{color:var(--white)}}
 @media(max-width:1000px){.brief-layout{grid-template-columns:1fr 1.2fr;gap:6%}.brief h2{font-size:36px}.brief-timing{grid-template-columns:minmax(0,1fr)}.brief-actions .button{padding:14px 17px}}
-@media(max-width:700px){.brief-layout{grid-template-columns:1fr;gap:34px}.brief h2{font-size:30px;letter-spacing:-1px}.brief-intro>p{font-size:12px;margin-top:18px}.section.brief{padding-top:34px}.brief-direct{margin-top:26px;padding-top:18px}.brief-form{gap:26px}.brief-field legend,.brief-legend{font-size:14px;margin-bottom:14px}.brief-option span{min-height:52px;padding:12px 14px;gap:10px}.brief-actions .button{width:100%;padding:14px 16px;gap:10px}.brief-note{margin-top:-12px}}
-@media(max-width:360px){.brief h2{font-size:27px}.brief-option span{font-size:11px;padding:11px 12px;gap:8px}}
+@media(max-width:700px){.brief-layout{grid-template-columns:1fr;gap:34px}.brief h2{font-size:30px;letter-spacing:-1px}.brief-intro>p{font-size:12px;margin-top:18px}.section.brief{padding-top:34px}.brief-direct{margin-top:26px;padding-top:18px}.brief-or{margin-bottom:20px}.brief-start{margin-bottom:24px}.brief-start h3{font-size:19px}.brief-link{padding:12px 14px;gap:9px}.brief-form{gap:26px}.brief-field legend,.brief-legend{font-size:14px;margin-bottom:14px}.brief-option span{min-height:52px;padding:12px 14px;gap:10px}.brief-actions .button{width:100%;padding:14px 16px;gap:10px}.brief-note{margin-top:-12px}}
+@media(max-width:360px){.brief-link{padding:12px;gap:8px;font-size:13px}.brief-link svg:last-child{display:none}.brief h2{font-size:27px}.brief-option span{font-size:11px;padding:11px 12px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.brief-option span,.brief-check,.brief-input,.brief-link,.brief-link svg{transition:none}}
