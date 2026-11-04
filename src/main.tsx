@@ -84,7 +84,7 @@ function App() {
         <div className="ambient-glow" aria-hidden="true"/>
         <div className="hero-meta"><span className="location">{t.location}</span></div>
         <div className="hero-identity">
-          <h1 id="hero-title">ArtProduction<span aria-hidden="true">.</span></h1>
+          <h1 id="hero-title" data-text="ArtProduction.">ArtProduction<span aria-hidden="true">.</span></h1>
           <div className="hero-rule" aria-hidden="true"/>
         </div>
         <div className="hero-details">

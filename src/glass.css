@@ -65,9 +65,11 @@
    so glass, edge, light, text and icons grow together. */
 .glass-pill,.button{--glow-strength:1;--halo-strength:.9;--button-edge:#ffffff3d;--button-glass-bg:linear-gradient(90deg,#ff4b5500 12%,#ff4b55f2 50%,#ff4b5500 88%) center bottom/100% 1.5px no-repeat,linear-gradient(180deg,#ffffff1c,#ffffff05 48%,#ffffff00 60%),radial-gradient(ellipse 70% 48% at 50% 100%,rgb(255 35 45/calc(.82*var(--glow-strength)*var(--glow-boost))) 0%,rgb(255 30 45/calc(.45*var(--glow-strength)*var(--glow-boost))) 34%,rgb(255 20 35/calc(.12*var(--glow-strength)*var(--glow-boost))) 68%,transparent 100%),var(--button-glass);--button-shadow:inset 0 1px 0 #ffffff33,inset 0 -1px 0 #0000004d,0 10px 24px -14px #000000b3;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid transparent;background:transparent;box-shadow:none;color:#fff;transform-origin:center;transition:--glow-boost 280ms ease,transform 280ms cubic-bezier(.22,1,.36,1)}
 /* The glass shell: fill, silver edge, top highlight, inner red glow and backdrop blur, sized exactly like the button. */
-.glass-pill:before,.button:before{content:'';position:absolute;inset:-1px;z-index:-1;border-radius:inherit;border:1px solid var(--button-edge);background:var(--button-glass-bg);box-shadow:var(--button-shadow);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);transition:border-color 280ms ease,box-shadow 280ms ease;pointer-events:none}
-/* Outer glow: the same horizontal shape continuing just below the lower edge, softer and more diffuse. */
-.glass-pill:after,.button:after{content:'';position:absolute;z-index:-2;left:12%;right:12%;top:calc(100% - 8px);height:20px;border-radius:50%;background:radial-gradient(ellipse 50% 50% at 50% 40%,#ff232de6,#ff1e2d73 45%,transparent 100%);filter:blur(7px) brightness(1);opacity:var(--halo-strength);transition:opacity 280ms ease,filter 280ms ease;pointer-events:none}
+.glass-pill:before,.button:before{content:'';position:absolute;inset:-1px;z-index:-2;border-radius:inherit;border:1px solid var(--button-edge);background:var(--button-glass-bg);box-shadow:var(--button-shadow);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);transition:border-color 280ms ease,box-shadow 280ms ease;pointer-events:none}
+/* Outer glow: the same horizontal shape continuing just below the lower edge, softer and more diffuse.
+   It is a pre-softened gradient (no filter) painted above the glass, so the glass's backdrop-filter never samples it:
+   while a parent block fades in during the scroll reveal, neither a missing blur nor an amplified backdrop can flash red. */
+.glass-pill:after,.button:after{content:'';position:absolute;z-index:-1;left:6%;right:6%;top:calc(100% - 11px);height:34px;border-radius:50%;background:radial-gradient(closest-side,#ff232dc2,#ff1e2d80 28%,#ff1e2d33 58%,#ff1e2d0d 80%,transparent);opacity:var(--halo-strength);transition:opacity 280ms ease;pointer-events:none}
 /* Card buttons keep the same light, scaled down for their size; the brief submit is the most expressive. */
 .glass-pill{--glow-strength:.7;--halo-strength:.5}
 .service-discuss{--glow-strength:.85;--halo-strength:.65}
@@ -95,7 +97,7 @@
  /* Hover: the whole button grows 4% from the centre; the edge and the light brighten slightly. */
  .glass-pill:hover,.button:hover{--glow-boost:1.12;transform:scale(1.04)}
  .glass-pill:hover:before,.button:hover:before{border-color:#ffffff5c;box-shadow:inset 0 1px 0 #ffffff47,inset 0 -1px 0 #0000004d,0 14px 28px -14px #000000b3}
- .glass-pill:hover:after,.button:hover:after{filter:blur(7px) brightness(1.12)}
+ .glass-pill:hover:after,.button:hover:after{opacity:calc(var(--halo-strength) * 1.12)}
  .service-more:hover:after{opacity:calc(var(--halo-strength) + .15)}
 }
 

@@ -1,7 +1,8 @@
 import {useEffect} from 'react';
 
 // Whole blocks reveal, not every small element: headings, text blocks, cards, review, process and brief groups.
-const revealTargets='h1, h2, .section-label, .hero-details, .about-story, .challenges-intro p, .challenge-row, .category-title, .service-card, .pricing-note, .testimonial-list, .testimonial-featured, .process-steps, .brief-intro>p, .brief-direct, .brief-or, .brief-start, .brief-form';
+// The hero title is left out: it has its own one-time entrance on page load (motion.css).
+const revealTargets='h2, .section-label, .hero-details, .about-story, .challenges-intro p, .challenge-row, .category-title, .service-card, .pricing-note, .testimonial-list, .testimonial-featured, .process-steps, .brief-intro>p, .brief-direct, .brief-or, .brief-start, .brief-form';
 const staggerStep=110, staggerSteps=6;
 
 /**

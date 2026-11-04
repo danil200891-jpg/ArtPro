@@ -9,6 +9,15 @@
 }
 @media(prefers-reduced-motion:no-preference){
  .brand-logo{animation:logo-enter 650ms ease-out both}
+ /* Hero title, once on page load: faint and soft (0–400ms), letters resolve left to right as the blur clears
+    (400–1100ms), then a soft light sweep (1100–1500ms). Opacity, mask, filter and background only — no layout change. */
+ .hero h1{position:relative;animation:title-reveal 1100ms cubic-bezier(.45,.05,.25,1) backwards}
+ .hero h1:after{content:attr(data-text);content:attr(data-text)/"";position:absolute;inset:0;color:transparent;background:linear-gradient(100deg,#fff0 38%,#ffffff8c 50%,#fff0 62%) 150% 0/220% 100% no-repeat;-webkit-background-clip:text;background-clip:text;opacity:0;pointer-events:none;animation:title-sheen 400ms ease-in-out 1100ms both}
+ @keyframes title-reveal{
+  0%,36%{filter:blur(8px);-webkit-mask:linear-gradient(90deg,#000 0 46%,#0003 56% 100%) 100% 0/220% 100% no-repeat;mask:linear-gradient(90deg,#000 0 46%,#0003 56% 100%) 100% 0/220% 100% no-repeat;mask-clip:no-clip}
+  100%{filter:blur(0);-webkit-mask:linear-gradient(90deg,#000 0 46%,#0003 56% 100%) 0 0/220% 100% no-repeat;mask:linear-gradient(90deg,#000 0 46%,#0003 56% 100%) 0 0/220% 100% no-repeat;mask-clip:no-clip}
+ }
+ @keyframes title-sheen{0%{opacity:0;background-position:150% 0}25%,75%{opacity:1}100%{opacity:0;background-position:-50% 0}}
  /* Scroll reveal with catch-up: scrolling down, blocks glide in from 72px below and settle softly; scrolling up, a light 12px settle.
     Hiding happens only off-screen and without a transition; every entry into view plays the reveal again. */
  [data-reveal]{--reveal-duration:1200ms;--reveal-ease:cubic-bezier(.22,1,.36,1);transition:opacity calc(var(--reveal-duration) * .8) ease-out var(--reveal-delay,0ms),translate var(--reveal-duration) var(--reveal-ease) var(--reveal-delay,0ms)}
